@@ -1,0 +1,20 @@
+// @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import "./theme.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+.mat-form-field.white-form-field {
+
+  .mat-form-field-underline{
+    background-color: rgba($color: #fff, $alpha: .8);
+  }
+
+  .mat-form-field-label{
+      color: white;
+  }
+}
+
+.text-center{
+  // text-align: center !important;
+}

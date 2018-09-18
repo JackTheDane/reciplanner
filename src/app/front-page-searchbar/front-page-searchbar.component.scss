@@ -1,0 +1,18 @@
+.search-area{
+  width: 100%;
+  
+  form{
+    color: white;
+    width: 100%;
+  
+    font-size: 1.4em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}
