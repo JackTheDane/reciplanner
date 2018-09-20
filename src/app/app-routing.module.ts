@@ -20,7 +20,7 @@ const routes: Routes = [
     component: CreateUserComponent
   },
   {
-    path: 'recipe/:id',
+    path: 'recipe',
     component: RecipeComponent
   }
 ];
