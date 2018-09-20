@@ -10,5 +10,9 @@ nav{
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
+
+    .router-link-active{
+      text-decoration-line: underline;
+    }
   }
 }

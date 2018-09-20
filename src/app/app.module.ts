@@ -16,7 +16,9 @@ import { FrontPageHeaderComponent } from './front-page-header/front-page-header.
 import { FrontPageSearchbarComponent } from './front-page-searchbar/front-page-searchbar.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeCardContainerComponent } from './recipe-card-container/recipe-card-container.component';
-import { RecipeComponent } from './recipe/recipe.component';
+import { ViewRecipesComponent } from './view-recipes/view-recipes.component';
+import { RecipePageComponent } from './recipe-page/recipe-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { RecipeComponent } from './recipe/recipe.component';
     FrontPageSearchbarComponent,
     RecipeCardComponent,
     RecipeCardContainerComponent,
-    RecipeComponent
+    ViewRecipesComponent,
+    RecipePageComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipesService } from '../recipes.service';
 
-import { IRecipe } from '../recipe/recipe.component';
+import { Recipe } from '../recipe';
 
 @Component({
   selector: 'app-recipe-card-container',
@@ -10,14 +10,14 @@ import { IRecipe } from '../recipe/recipe.component';
 })
 export class RecipeCardContainerComponent implements OnInit {
 
-  recipes$: Array<IRecipe>;
+  recipes$: Array<Recipe>;
 
   constructor( private data: RecipesService ) { }
 
   ngOnInit() {
     this.data.getRecipesByQuery('chicken').subscribe(
-      (result: any) => this.recipes$ = result.hits.map( e => e.recipe ) // Return the recipes retrieved from the api
-    )
+      (result: any) => this.recipes$ = result.recipes // Return the recipes retrieved from the api
+    );
   }
 
 }
