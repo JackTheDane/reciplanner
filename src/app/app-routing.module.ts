@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { MyReciplansComponent } from './my-reciplans/my-reciplans.component';
-import { RecipeComponent } from './recipe/recipe.component';
-
+import { RecipePageComponent } from './recipe-page/recipe-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -20,8 +20,12 @@ const routes: Routes = [
     component: CreateUserComponent
   },
   {
-    path: 'recipe',
-    component: RecipeComponent
+    path: 'recipe/:id',
+    component: RecipePageComponent
+  },
+  {
+    path: 'admin',
+    component: AdminPageComponent
   }
 ];
 
