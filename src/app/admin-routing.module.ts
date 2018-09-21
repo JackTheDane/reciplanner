@@ -1,20 +1,13 @@
-import { AuthGuardService } from './auth-guard.service';
+import { NgModule } from '@angular/core';
+import { AuthGuard } from './auth-guard.service';
+import { Routes, RouterModule } from '@angular/router';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const adminRoutes: Routes = [
   {
     path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuardService],
-    children: [
-      {
-        path: '',
-        children: [
-          { path: 'crises', component: ManageCrisesComponent },
-          { path: 'heroes', component: ManageHeroesComponent },
-          { path: '', component: AdminDashboardComponent }
-        ],
-      }
-    ]
+    component: AdminPageComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

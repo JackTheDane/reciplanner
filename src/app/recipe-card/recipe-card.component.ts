@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgStyle } from '@angular/common';
-import { DomSanitizer } from '@angular/platform-browser';
 
 // export interface IRecipeCard{
 //   title: string;
@@ -18,7 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class RecipeCardComponent implements OnInit {
   // cardInfo: IRecipeCard;
 
-  constructor( private sanitizer: DomSanitizer ) {
+  constructor( ) {
 
   }
 

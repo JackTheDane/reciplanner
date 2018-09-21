@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// TODO: Fix all the things
-
 @Injectable({
   providedIn: 'root'
 })
