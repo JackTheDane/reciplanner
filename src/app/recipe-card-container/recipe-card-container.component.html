@@ -1,11 +1,14 @@
-<div class="recipe-card-container">
+<div class="recipe-card-container" >
 
-  <a class="recipe-card-container__link" routerLink="/recipe/{{ recipe.recipe_id }}" *ngFor="let recipe of recipes$">
-    <app-recipe-card 
+    <app-recipe-card *ngFor="let recipe of recipes$" 
       title="{{ recipe.title }}" 
-      img="{{ recipe.image_url }}" 
+      image_url="{{ recipe.image_url }}" 
       recipe_id="{{ recipe.recipe_id }}" 
-      publisher="{{ recipe.publisher }}" >
+      social_rank=" {{ recipe.social_rank }} "
+      publisher="{{ recipe.publisher }}" 
+      publisher_url="{{ recipe.publisher_url }}"
+      source_url="{{ recipe.source_url }}"
+    >
     </app-recipe-card>
-  </a>
+
 </div>

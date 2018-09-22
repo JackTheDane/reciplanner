@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 
+// TODO: Make working AuthGuard Service to verify user login
+
 @Injectable()
 export class AuthService {
   isLoggedIn = false;

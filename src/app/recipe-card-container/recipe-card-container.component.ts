@@ -11,13 +11,15 @@ import { BasicRecipe } from '../recipe-basic';
 export class RecipeCardContainerComponent implements OnInit {
 
   recipes$: Array<BasicRecipe>;
+  recipeContainer;
 
   constructor( private data: RecipesService ) { }
 
   ngOnInit() {
-    this.data.getRecipesByQuery('chicken').subscribe(
+    this.data.getRecipesByQuery().subscribe(
       (result: any) => this.recipes$ = result.recipes // Return the recipes retrieved from the api
     );
-  }
 
+    this.recipeContainer = document.getElementsByClassName('recipe-card-container')[0];
+  }
 }
