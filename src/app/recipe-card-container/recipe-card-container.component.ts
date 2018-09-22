@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipesService } from '../recipes.service';
 
-import { Recipe } from '../recipe';
+import { BasicRecipe } from '../recipe-basic';
 
 @Component({
   selector: 'app-recipe-card-container',
@@ -10,7 +10,7 @@ import { Recipe } from '../recipe';
 })
 export class RecipeCardContainerComponent implements OnInit {
 
-  recipes$: Array<Recipe>;
+  recipes$: Array<BasicRecipe>;
 
   constructor( private data: RecipesService ) { }
 

@@ -16,7 +16,7 @@ export class RecipesService {
     return this.http.get(url);
   }
 
-  getRecipeByid(id: string = '' ) {
+  getRecipeById(id: string = '' ) {
     const url = `http://mbpmedia.com/_api_rp/g?rId=${ id }`;
     // const url = '../assets/testJSON/recipe.json'; // Temp, local JSON file to reduce API calls
 

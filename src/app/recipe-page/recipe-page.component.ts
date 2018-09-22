@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FullRecipe } from '../recipe-full';
+import { RecipesService } from '../recipes.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
-export interface FullRecipe {
-  title: string;
-  id: string;
-  img: string;
-  source_url: string;
-  publisher: string;
-  publisher_url: string;
-  ranking: number;
-  ingredients: Array<string>;
+interface ApiResponse {
+  recipe: FullRecipe;
 }
 
 @Component({
@@ -18,9 +15,17 @@ export interface FullRecipe {
 })
 export class RecipePageComponent implements OnInit {
 
-  constructor() { }
+  recipe$: FullRecipe;
+  recipeId: string; // ID passed via route parameters
+
+  constructor( private data: RecipesService, private route: ActivatedRoute ) {
+    this.route.params.subscribe( params => this.recipeId = params.id ); // Set recipeId to be the id of the route parameters
+  }
 
   ngOnInit() {
+    this.data.getRecipeById( this.recipeId ).subscribe(
+      (data: ApiResponse ) => { this.recipe$ = data.recipe; console.log( this.recipe$ ); }
+    );
   }
 
 }
