@@ -48,8 +48,17 @@ export class RecipeCardComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(RecipePageComponent, {
-      height: '400px',
-      width: '600px',
+      height: '500px',
+      width: '80vw',
+      data: {
+        recipe_id: this.recipe_id,
+        title: this.title,
+        image_url: this.image_url,
+        social_rank: this.social_rank,
+        publisher: this.publisher,
+        source_url: this.source_url,
+        publisher_url: this.publisher_url
+      }
     });
   }
 
