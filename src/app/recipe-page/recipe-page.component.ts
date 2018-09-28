@@ -4,10 +4,12 @@ import { RecipesService } from '../recipes.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface ApiResponse {
   recipe: FullRecipe;
 }
+
 
 @Component({
   selector: 'app-recipe-page',
@@ -16,36 +18,22 @@ interface ApiResponse {
 })
 export class RecipePageComponent implements OnInit {
 
-  // @Input()
-  // recipe_id: string;
-  
-  // @Input()
-  // title: string;
-
-  // @Input()
-  // image_url: string;
-
-  // @Input()
-  // social_rank: string;
-
-  // @Input()
-  // publisher: string;
-
-  // @Input()
-  // source_url: string;
-
-  // @Input()
-  // publisher_url: string;
-
   recipe$: FullRecipe;
-  recipeId: string; // ID passed via route parameters
+  // recipeId: string; // ID passed via route parameters
 
   // constructor( private data: RecipesService, private route: ActivatedRoute ) {
   //   this.route.params.subscribe( params => this.recipeId = params.id ); // Set recipeId to be the id of the route parameters
   // }
 
-  constructor( dialogRef: MatDialogRef<RecipePageComponent>, @Inject(MAT_DIALOG_DATA) public data: FullRecipe ) {
+  constructor( 
+    dialogRef: MatDialogRef<RecipePageComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: FullRecipe,
+    private sanitizer: DomSanitizer) {
 
+  }
+
+  getImgSrc() {
+    return this.recipe$.image_url;
   }
 
   ngOnInit() {

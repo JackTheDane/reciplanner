@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { MatDialog } from '@angular/material';
 import { RecipePageComponent } from '../recipe-page/recipe-page.component';
+import { ignoreElements } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe-card',
@@ -48,8 +49,7 @@ export class RecipeCardComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(RecipePageComponent, {
-      height: '500px',
-      width: '80vw',
+      panelClass: 'recipe-page-modal',
       data: {
         recipe_id: this.recipe_id,
         title: this.title,

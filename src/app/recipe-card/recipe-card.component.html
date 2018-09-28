@@ -16,11 +16,11 @@
         </span>
       </div>
   
-  
-      <a class="recipe-card__publisher-container" href="{{ source_url }}">
-        <img src="//logo.clearbit.com/{{ publisher_url + '?size=30' }}">
-        <mat-card-subtitle> {{ publisher }} </mat-card-subtitle>
-      </a>
+      <app-publisher-container
+        publisher = "{{ publisher }}"
+        publisher_url = "{{ publisher_url }}"
+        source_url = "{{ source_url }}"
+      ></app-publisher-container>
     </div>
 
   </mat-card-content>

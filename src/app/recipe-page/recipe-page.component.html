@@ -1,12 +1,22 @@
-<div *ngIf="recipe$">
-  Recipe page
-  {{ recipe$.recipe_id }}
+<div class="recipe-page" *ngIf="recipe$">
+
+  <div class="recipe-page__image-container">
+    <img [src]="getImgSrc()" alt="{{ recipe$.title }}">
+  </div>
+
+  <mat-dialog-content>
+    <div class="recipe-page__header">
+      <h3 mat-dialog-title>
+        {{ recipe$.title }}
+      </h3>
+    
+      <app-publisher-container
+        publisher = "{{ recipe$.publisher }}"
+        publisher_url = "{{ recipe$.publisher_url }}"
+        source_url = "{{ recipe$.source_url }}"
+      ></app-publisher-container>
+    </div>
+
+  </mat-dialog-content>
+
 </div>
-
-<!-- Recipe page!
-
-<div>
-
-  {{ recipe_id }}
-  
-</div> -->

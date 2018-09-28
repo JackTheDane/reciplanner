@@ -19,6 +19,8 @@ import { RecipeCardContainerComponent } from './recipe-card-container/recipe-car
 import { ViewRecipesComponent } from './view-recipes/view-recipes.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PublisherContainerComponent } from './publisher-container/publisher-container.component';
 
 
 @NgModule({
@@ -34,14 +36,16 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     RecipeCardContainerComponent,
     ViewRecipesComponent,
     RecipePageComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    PublisherContainerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

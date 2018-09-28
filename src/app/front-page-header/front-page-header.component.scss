@@ -4,6 +4,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
+  // TODO: Change to a fixed div element, not background-attachment
   background-attachment: fixed;
 
   display: flex;

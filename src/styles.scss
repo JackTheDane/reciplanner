@@ -15,6 +15,9 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
   }
 }
 
-.text-center{
-  // text-align: center !important;
+.recipe-page-modal .mat-dialog-container{
+  width: 80vw;
+  max-height: 80vh;
+
+  padding: 0;
 }
