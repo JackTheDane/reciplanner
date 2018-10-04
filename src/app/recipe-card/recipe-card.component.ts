@@ -47,6 +47,16 @@ export class RecipeCardComponent implements OnInit {
     };
   }
 
+  getTitleText() { // TODO: Decode Unicode(?) characters and output proper title
+    const title = decodeURIComponent(this.title);
+
+    if ( title.length > 45 ) {
+      return title.substr(0, 43) + '...';
+    }
+
+    return title;
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(RecipePageComponent, {
       panelClass: 'recipe-page-modal',

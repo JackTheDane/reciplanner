@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-publisher-container',
   templateUrl: './publisher-container.component.html',
   styleUrls: ['./publisher-container.component.scss']
 })
-export class PublisherContainerComponent implements OnInit {
+export class PublisherContainerComponent {
 
   constructor() { }
   
@@ -18,8 +20,11 @@ export class PublisherContainerComponent implements OnInit {
   @Input()
   publisher_url: string;
 
+  @Input()
+  image_size: number;
 
-  ngOnInit() {
+  getAvatarImage() {
+    return '//logo.clearbit.com/' + this.publisher_url + '?size=' + this.image_size;
   }
 
 }

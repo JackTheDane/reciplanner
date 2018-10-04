@@ -21,6 +21,7 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublisherContainerComponent } from './publisher-container/publisher-container.component';
+import { RankingMeterComponent } from './ranking-meter/ranking-meter.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { PublisherContainerComponent } from './publisher-container/publisher-con
     ViewRecipesComponent,
     RecipePageComponent,
     AdminPageComponent,
-    PublisherContainerComponent
+    PublisherContainerComponent,
+    RankingMeterComponent
   ],
   imports: [
     BrowserModule,

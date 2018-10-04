@@ -12,6 +12,10 @@ const routes: Routes = [
     component: FrontPageComponent
   },
   {
+    path: 'search/:query',
+    component: FrontPageComponent
+  },
+  {
     path: 'my-reciplans',
     component: MyReciplansComponent
   },

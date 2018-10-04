@@ -1,4 +1,4 @@
 <a class="publisher-container" href="{{ source_url }}" target="_blank" *ngIf="publisher">
-  <img src="//logo.clearbit.com/{{ publisher_url + '?size=30' }}">
+  <img src="{{ getAvatarImage() }}">
   <mat-card-subtitle> By {{ publisher }} </mat-card-subtitle>
 </a>
