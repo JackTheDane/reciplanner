@@ -1,8 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgStyle } from '@angular/common';
-import { MatDialog } from '@angular/material';
-import { RecipePageComponent } from '../recipe-page/recipe-page.component';
-import { ignoreElements } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe-card',
@@ -11,11 +7,6 @@ import { ignoreElements } from 'rxjs/operators';
 })
 
 export class RecipeCardComponent implements OnInit {
-  // cardInfo: IRecipeCard;
-
-  constructor( public dialog: MatDialog ) {
-
-  }
 
   @Input()
   recipe_id: string;
@@ -27,7 +18,7 @@ export class RecipeCardComponent implements OnInit {
   image_url: string;
 
   @Input()
-  social_rank: string;
+  social_rank: number;
 
   @Input()
   publisher: string;
@@ -39,6 +30,7 @@ export class RecipeCardComponent implements OnInit {
   publisher_url: string;
 
   ngOnInit() {
+    this.social_rank = Math.round( this.social_rank );
   }
 
   getBackgroundImage() {
@@ -47,29 +39,27 @@ export class RecipeCardComponent implements OnInit {
     };
   }
 
-  getTitleText() { // TODO: Decode Unicode(?) characters and output proper title
-    const title = decodeURIComponent(this.title);
-
-    if ( title.length > 45 ) {
-      return title.substr(0, 43) + '...';
-    }
-
-    return title;
+  getHalfStarVisible(rating) {
+    return Math.round(rating) > rating;
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(RecipePageComponent, {
-      panelClass: 'recipe-page-modal',
-      data: {
-        recipe_id: this.recipe_id,
-        title: this.title,
-        image_url: this.image_url,
-        social_rank: this.social_rank,
-        publisher: this.publisher,
-        source_url: this.source_url,
-        publisher_url: this.publisher_url
-      }
-    });
+  // TODO: Implement custom colours for positive, ok and negative
+  // TODO: Implement custom hover colour changes depending on rating
+
+  handleStarClickChange(e) {
+    console.log('Click', e);
+  }
+
+  handleStarHoverChange(e) {
+    console.log('Hover', e);
+  }
+
+  getTitleText() {
+    if ( this.title.length > 45 ) {
+      return this.title.substr(0, 43) + '...';
+    }
+
+    return this.title;
   }
 
 }

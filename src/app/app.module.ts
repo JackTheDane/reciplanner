@@ -23,6 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PublisherContainerComponent } from './publisher-container/publisher-container.component';
 import { RankingMeterComponent } from './ranking-meter/ranking-meter.component';
 
+import { StarRatingModule } from 'angular-star-rating';
+import { HtmlCharactersPipe } from './html-characters.pipe';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { RankingMeterComponent } from './ranking-meter/ranking-meter.component';
     RecipePageComponent,
     AdminPageComponent,
     PublisherContainerComponent,
-    RankingMeterComponent
+    RankingMeterComponent,
+    HtmlCharactersPipe
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import { RankingMeterComponent } from './ranking-meter/ranking-meter.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StarRatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

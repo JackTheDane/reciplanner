@@ -8,3 +8,7 @@ $reciplanner-warn:    mat-palette($mat-deep-orange);
 $reciplanner-theme: mat-light-theme($reciplanner-primary, $reciplanner-accent, $reciplanner-warn);
 
 @include angular-material-theme($reciplanner-theme);
+
+$primary: mat-palette($reciplanner-primary);
+$accent: mat-palette($reciplanner-accent);
+$warn: mat-palette($reciplanner-warn);
