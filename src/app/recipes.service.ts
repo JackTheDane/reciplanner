@@ -9,16 +9,18 @@ export class RecipesService {
 
   constructor(private http: HttpClient) { }
 
-  getRecipesByQuery(query: string = '') {
-    const url = `http://mbpmedia.com/_api_rp/s?q=${ query }`;
-    // const url = '../assets/testJSON/recipes.json'; // Temp, local JSON file to reduce API calls
+  getRecipesByQuery(query: string = '', page: number = 1) {
+    let url = `http://mbpmedia.com/_api_rp/s?q=${ query }`;
+
+    if (page > 1) {
+      url += ('&page=' + page);
+    }
 
     return this.http.get(url);
   }
 
   getRecipeById(id: string = '' ) {
     const url = `http://mbpmedia.com/_api_rp/g?rId=${ id }`;
-    // const url = '../assets/testJSON/recipe.json'; // Temp, local JSON file to reduce API calls
 
     return this.http.get(url);
   }

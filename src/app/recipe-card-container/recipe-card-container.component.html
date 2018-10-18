@@ -1,6 +1,14 @@
-<div class="recipe-card-container" >
+<div class="loadingContainer" *ngIf="isLoading">
+  <mat-spinner ></mat-spinner>
+</div>
 
-    <app-recipe-card *ngFor="let recipe of recipes$" 
+<div *ngIf="pageNumber">
+  {{pageNumber}}
+</div>
+
+<div class="recipe-card-container" *ngIf="!isLoading">
+    <app-recipe-card 
+      *ngFor="let recipe of recipes$"
       title="{{ recipe.title }}" 
       image_url="{{ recipe.image_url }}" 
       recipe_id="{{ recipe.recipe_id }}" 
@@ -12,3 +20,5 @@
     </app-recipe-card>
 
 </div>
+
+<!-- TODO: Add pagination functionality. -->

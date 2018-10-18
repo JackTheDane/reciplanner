@@ -21,7 +21,6 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublisherContainerComponent } from './publisher-container/publisher-container.component';
-import { RankingMeterComponent } from './ranking-meter/ranking-meter.component';
 
 import { StarRatingModule } from 'angular-star-rating';
 import { HtmlCharactersPipe } from './html-characters.pipe';
@@ -42,7 +41,6 @@ import { HtmlCharactersPipe } from './html-characters.pipe';
     RecipePageComponent,
     AdminPageComponent,
     PublisherContainerComponent,
-    RankingMeterComponent,
     HtmlCharactersPipe
   ],
   imports: [

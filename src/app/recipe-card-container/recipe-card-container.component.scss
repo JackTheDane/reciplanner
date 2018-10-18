@@ -4,11 +4,22 @@
   margin: 30px auto;
   
   display: grid;
+  justify-content: center;
   
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
 
+  
   &__link{
     text-decoration: none;
+  }
+}
+
+.loadingContainer {
+  margin-top: 30px;
+  
+  mat-spinner {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

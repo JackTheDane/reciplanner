@@ -13,21 +13,32 @@ import { ActivatedRoute } from '@angular/router';
 export class RecipeCardContainerComponent implements OnInit {
 
   recipes$: Array<BasicRecipe>;
-  recipeContainer;
   query: string;
+  pageNumber: number;
+  isLoading: boolean;
 
   constructor( private data: RecipesService, private route: ActivatedRoute ) {
     this.route.params.subscribe( 
-        params => {
+      params => {
+          this.isLoading = true;
           this.query = params.query;
-          this.data.getRecipesByQuery( this.query ).subscribe(
-            (result: any) => this.recipes$ = result.recipes // Return the recipes retrieved from the api
+
+          if ( params.pageNumber ) {
+            this.pageNumber = params.pageNumber;
+          }
+
+          this.data.getRecipesByQuery( this.query, this.pageNumber ).subscribe(
+            (result: any) => {
+              this.isLoading = false;
+              return this.recipes$ = result.recipes; // Return the recipes retrieved from the api
+            } 
           );
         }
     ); // Set search query to be the query based via the route parameters
   }
 
   ngOnInit() {
-    this.recipeContainer = document.getElementsByClassName('recipe-card-container')[0];
   }
+
+  // TODO: Add visual indicatior, that new recipes are being loaded
 }
