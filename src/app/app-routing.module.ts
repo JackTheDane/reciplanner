@@ -12,11 +12,15 @@ const routes: Routes = [
     component: FrontPageComponent
   },
   {
+    path: 'page/:pageNumber',
+    component: FrontPageComponent
+  },
+  {
     path: 'search/:query',
     component: FrontPageComponent
   },
   {
-    path: 'search/:query/:pageNumber',
+    path: 'search/:query/page/:pageNumber',
     component: FrontPageComponent
   },
   {

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FrontPageSearchbarComponent } from './front-page-searchbar.component';
+import { PaginatorComponent } from './paginator.component';
 
-describe('FrontPageSearchbarComponent', () => {
-  let component: FrontPageSearchbarComponent;
-  let fixture: ComponentFixture<FrontPageSearchbarComponent>;
+describe('PaginatorComponent', () => {
+  let component: PaginatorComponent;
+  let fixture: ComponentFixture<PaginatorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrontPageSearchbarComponent ]
+      declarations: [ PaginatorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FrontPageSearchbarComponent);
+    fixture = TestBed.createComponent(PaginatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

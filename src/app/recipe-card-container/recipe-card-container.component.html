@@ -2,10 +2,6 @@
   <mat-spinner ></mat-spinner>
 </div>
 
-<div *ngIf="pageNumber">
-  {{pageNumber}}
-</div>
-
 <div class="recipe-card-container" *ngIf="!isLoading">
     <app-recipe-card 
       *ngFor="let recipe of recipes$"

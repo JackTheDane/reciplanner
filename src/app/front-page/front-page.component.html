@@ -1,12 +1,20 @@
 <div class="main-page">
 
-  <app-front-page-header></app-front-page-header>
+  <!-- TODO: Get route params through this page, rather than through each component -->
+
+  <app-front-page-header [query]="query"></app-front-page-header>
 
   <!-- #TODO: Suggestion panel -->
 
-  <app-recipe-card-container></app-recipe-card-container>
+  <app-recipe-card-container
+    [recipes$]="recipes$"
+    [isLoading]="isLoading"
+  ></app-recipe-card-container>
 
-  <!-- TODO: Pagination -->
-  
+  <app-paginator
+    [query]="query"
+    [pageNumber]="pageNumber"
+    [showNextPage]="numberOfResponses >= 30"
+  ></app-paginator>
 
 </div>

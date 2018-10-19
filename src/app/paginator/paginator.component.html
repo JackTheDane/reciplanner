@@ -1,0 +1,5 @@
+<div class="paginator">
+  <a mat-button color="primary" [routerLink]="getRouterLink(-1)" *ngIf="pageNumber > 1"> < Previous page </a>
+  <button mat-button disabled> {{ pageNumber }} </button>
+  <a mat-button color="primary" [routerLink]="getRouterLink(1)" *ngIf="showNextPage"> Next page > </a>
+</div>

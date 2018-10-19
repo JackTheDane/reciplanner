@@ -13,7 +13,6 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { MyReciplansComponent } from './my-reciplans/my-reciplans.component';
 import { FrontPageHeaderComponent } from './front-page-header/front-page-header.component';
-import { FrontPageSearchbarComponent } from './front-page-searchbar/front-page-searchbar.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeCardContainerComponent } from './recipe-card-container/recipe-card-container.component';
 import { ViewRecipesComponent } from './view-recipes/view-recipes.component';
@@ -24,6 +23,7 @@ import { PublisherContainerComponent } from './publisher-container/publisher-con
 
 import { StarRatingModule } from 'angular-star-rating';
 import { HtmlCharactersPipe } from './html-characters.pipe';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 
 @NgModule({
@@ -34,14 +34,14 @@ import { HtmlCharactersPipe } from './html-characters.pipe';
     CreateUserComponent,
     MyReciplansComponent,
     FrontPageHeaderComponent,
-    FrontPageSearchbarComponent,
     RecipeCardComponent,
     RecipeCardContainerComponent,
     ViewRecipesComponent,
     RecipePageComponent,
     AdminPageComponent,
     PublisherContainerComponent,
-    HtmlCharactersPipe
+    HtmlCharactersPipe,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

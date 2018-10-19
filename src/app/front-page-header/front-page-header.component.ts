@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-front-page-header',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontPageHeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  query: string;
+
+  searchBar = new FormGroup({
+    query : new FormControl('')
+  });
+  
+  constructor ( private router: Router ) {}
 
   ngOnInit() {
+    if ( this.query !== null && this.query !== '' ) {
+      this.searchBar.controls['query'].setValue( this.query );
+    }
   }
 
+  handleSubmit() {
+    this.query = this.searchBar.value.query;
+
+    if ( this.query !== null && this.query !== '' ) {
+      this.router.navigate(['/search/' + this.query]);
+    } else {
+      this.router.navigate( [''] );
+    }
+  }
 }
