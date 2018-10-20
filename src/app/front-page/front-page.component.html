@@ -1,10 +1,9 @@
 <div class="main-page">
 
-  <!-- TODO: Get route params through this page, rather than through each component -->
-
   <app-front-page-header [query]="query"></app-front-page-header>
 
   <!-- #TODO: Suggestion panel -->
+  <app-query-suggestions [query]="query" ></app-query-suggestions>
 
   <app-recipe-card-container
     [recipes$]="recipes$"

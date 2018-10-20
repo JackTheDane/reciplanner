@@ -22,7 +22,7 @@ export class PaginatorComponent implements OnInit {
   }
 
   public getRouterLink(pageDifference: number) {
-    const pageToLinkTo = (+this.pageNumber + pageDifference);
+    const pageToLinkTo = +this.pageNumber + pageDifference;
     let routerLink = '/page/' + pageToLinkTo;
 
     if ( this.query ) {

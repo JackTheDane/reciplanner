@@ -1,0 +1,52 @@
+.suggestions {
+  display: flex;
+  margin: 30px;
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    width: 90px;
+
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity .2s;
+
+    &--selected {
+      opacity: 1;
+      
+      .suggestions__image {
+        // TODO: Add correct theme color
+        border: 2px solid green;
+      }
+    }
+  }
+
+  &:hover {
+    .suggestions__card {
+      opacity: .8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__image {
+    background-image: url("http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    border-radius: 50%;
+
+    height: 60px;
+    width: 60px;
+  }
+
+  &__title {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="suggestions">
+
+  <div class="suggestions__card" [class.suggestions__card--selected]="suggestion.isSelected" (click)="handleClick(suggestion)" *ngFor="let suggestion of suggestions">
+    <div class="suggestions__image"></div>
+    <p class="suggestions__title"> {{suggestion.title}} </p>
+  </div>
+
+</div>

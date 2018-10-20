@@ -15,7 +15,6 @@ import { MyReciplansComponent } from './my-reciplans/my-reciplans.component';
 import { FrontPageHeaderComponent } from './front-page-header/front-page-header.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeCardContainerComponent } from './recipe-card-container/recipe-card-container.component';
-import { ViewRecipesComponent } from './view-recipes/view-recipes.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +23,7 @@ import { PublisherContainerComponent } from './publisher-container/publisher-con
 import { StarRatingModule } from 'angular-star-rating';
 import { HtmlCharactersPipe } from './html-characters.pipe';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { QuerySuggestionsComponent } from './query-suggestions/query-suggestions.component';
 
 
 @NgModule({
@@ -36,12 +36,12 @@ import { PaginatorComponent } from './paginator/paginator.component';
     FrontPageHeaderComponent,
     RecipeCardComponent,
     RecipeCardContainerComponent,
-    ViewRecipesComponent,
     RecipePageComponent,
     AdminPageComponent,
     PublisherContainerComponent,
     HtmlCharactersPipe,
-    PaginatorComponent
+    PaginatorComponent,
+    QuerySuggestionsComponent
   ],
   imports: [
     BrowserModule,
