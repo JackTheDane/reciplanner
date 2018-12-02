@@ -1,15 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-publisher-container',
   templateUrl: './publisher-container.component.html',
   styleUrls: ['./publisher-container.component.scss']
 })
-export class PublisherContainerComponent {
 
-  constructor() { }
+export class PublisherContainerComponent {
   
   @Input()
   publisher: string;
@@ -23,8 +20,17 @@ export class PublisherContainerComponent {
   @Input()
   image_size: number;
 
+  noImgUrl = false;
+
   getAvatarImage() {
-    return '//logo.clearbit.com/' + this.publisher_url + '?size=' + this.image_size;
+    return !this.noImgUrl
+      ? '//logo.clearbit.com/' + this.publisher_url + '?size=' + this.image_size
+      : 'assets/images/avatar.jpg';
   }
 
+  getStandardAvatar(): void {
+    if (!this.noImgUrl) {
+      this.noImgUrl = true;
+    }
+  }
 }

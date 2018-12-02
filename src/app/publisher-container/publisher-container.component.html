@@ -1,4 +1,4 @@
 <a class="publisher-container" href="{{ source_url }}" target="_blank" *ngIf="publisher">
-  <img src="{{ getAvatarImage() }}">
+  <img src="{{ getAvatarImage() }}" alt="{{publisher}}" (error)="getStandardAvatar()" width="{{image_size}}" height="{{image_size}}">
   <mat-card-subtitle> By {{ publisher }} </mat-card-subtitle>
 </a>
