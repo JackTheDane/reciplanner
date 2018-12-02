@@ -5,14 +5,10 @@ import { UserState } from './store';
 import { IRating } from './IRating';
 
 const INITIAL_STATE: UserState = {
-  // isBaby: undefined,
   name: 'Bob',
   isLoggedIn: true,
   ratings: []
-  // sitters: TempDataService.getSitters(), 
-  // errorMessage: '', 
-  // isLoading: false 
-}; // 
+};
 
 export function userReducer(state: UserState = INITIAL_STATE, action: any) {
  switch (action.type) {

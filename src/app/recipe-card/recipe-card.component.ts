@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+// import { RatingComponent } from '../rating/rating.component';
 
 @Component({
   selector: 'app-recipe-card',
@@ -37,21 +38,6 @@ export class RecipeCardComponent implements OnInit {
     return {
       'background-image' : 'url(' + this.image_url + ')'
     };
-  }
-
-  getHalfStarVisible(rating) {
-    return Math.round(rating) > rating;
-  }
-
-  // TODO: Implement custom colours for positive, ok and negative
-  // TODO: Implement custom hover colour changes depending on rating
-
-  handleStarClickChange(e) {
-    console.log('Click', e);
-  }
-
-  handleStarHoverChange(e) {
-    console.log('Hover', e);
   }
 
   getTitleText() {

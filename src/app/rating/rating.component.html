@@ -1,3 +1,13 @@
-<p>
-  rating works!
-</p>
+<star-rating 
+  [starType]="'svg'" 
+  [labelText]="social_rank" 
+  labelPosition="right"
+  [showHalfStars]="true"
+  [getHalfStarVisible]="getHalfStarVisible"
+  [hoverEnabled]="true"
+  staticColor="positive"
+  [rating]="(social_rank+5)/20"
+  (starClickChange)="handleStarClickChange($event)"
+  (hoverRatingChange)="handleStarHoverChange($event)"
+>
+</star-rating>

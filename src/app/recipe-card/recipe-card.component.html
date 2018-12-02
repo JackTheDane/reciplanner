@@ -10,24 +10,10 @@
     </a>
 
     <div class="recipe-card__sub-content">
-      <!-- TODO: Setup redux -->
-      <!-- TODO: Once redux has been setup, add rating support for a recipe, by clicking on a star -->
-      <!-- TODO: Add testing to the ranking module, once redux has been setup -->
-
-      <star-rating 
-        [starType]="'svg'" 
-        [labelText]="social_rank" 
-        labelPosition="right"
-        [showHalfStars]="true"
-        [getHalfStarVisible]="getHalfStarVisible"
-        [hoverEnabled]="true"
-        staticColor="positive"
-        [rating]="(social_rank+5)/20"
-        (click)="test($event)"
-        (starClickChange)="handleStarClickChange($event)"
-        (hoverRatingChange)="handleStarHoverChange($event)"
-      >
-      </star-rating>
+      <app-rating
+        [social_rank]="social_rank"
+        [id]="recipe_id"
+      > </app-rating>
   
       <app-publisher-container
         publisher = "{{ publisher }}"

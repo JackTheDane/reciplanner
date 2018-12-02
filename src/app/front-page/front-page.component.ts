@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipesService } from '../recipes.service';
 import { BasicRecipe } from '../recipe-basic';
 
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store';
+
 interface IRecipeApiResponse {
   count: number;
   recipes: BasicRecipe[];
@@ -14,22 +17,30 @@ interface IRecipeApiResponse {
   templateUrl: './front-page.component.html',
   styleUrls: ['./front-page.component.scss']
 })
-export class FrontPageComponent implements OnInit {
+
+export class FrontPageComponent {
 
   recipes$: Array<BasicRecipe>;
   query: string;
   pageNumber = 1;
   numberOfResponses: number;
   isLoading: boolean;
+  temp: any;
 
-  constructor ( private data: RecipesService, private route: ActivatedRoute ) {
+  
+  constructor ( 
+    private data: RecipesService, 
+    private route: ActivatedRoute,
+    private ngRedux: NgRedux<IAppState>
+  ) {
     this.route.params.subscribe( params => {
-      if ( params.pageNumber ) {
-        this.pageNumber = params.pageNumber;
-      }
-      if ( params.query ) {
-        this.query = params.query; // Set search query to be the query based via the route parameters
-      }
+
+      this.pageNumber = params.pageNumber;
+      this.query = params.query;
+
+      ngRedux.select( res => res.userInfo.ratings ).subscribe( ratings => {
+        this.temp = ratings.map( e => `Id: ${e.id} and rating: ${e.rating}` ).join('    ');
+      });
 
       this.isLoading = true;
 
@@ -43,7 +54,5 @@ export class FrontPageComponent implements OnInit {
     }); 
   }
 
-  ngOnInit() {
-  }
 
 }

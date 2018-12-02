@@ -10,6 +10,7 @@ export class HtmlCharactersPipe implements PipeTransform {
     tempString = tempString.replace('&amp;', '&');
     tempString = tempString.replace('&#174', '®');
     tempString = tempString.replace('&#169', '©');
+    tempString = tempString.replace('&#8217;', '\'');
     return tempString;
   }
 }
