@@ -19,11 +19,13 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublisherContainerComponent } from './publisher-container/publisher-container.component';
+import { NgReduxModule } from '@angular-redux/store';
 
 import { StarRatingModule } from 'angular-star-rating';
 import { HtmlCharactersPipe } from './html-characters.pipe';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { QuerySuggestionsComponent } from './query-suggestions/query-suggestions.component';
+import { RatingComponent } from './rating/rating.component';
 
 
 @NgModule({
@@ -41,10 +43,12 @@ import { QuerySuggestionsComponent } from './query-suggestions/query-suggestions
     PublisherContainerComponent,
     HtmlCharactersPipe,
     PaginatorComponent,
-    QuerySuggestionsComponent
+    QuerySuggestionsComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
+    NgReduxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
