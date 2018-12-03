@@ -11,7 +11,6 @@ import { NgRedux } from '@angular-redux/store';
 
 export class RatingComponent {
 
-  // TODO: Once redux has been setup, add rating support for a recipe, by clicking on a star
   // TODO: Add testing to the ranking module, once redux has been setup
 
   @Input()

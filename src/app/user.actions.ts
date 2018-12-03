@@ -22,6 +22,7 @@ export class UserActions {
   static ADD_RATING = 'ADD_RATING'; 
   // static CREATE_RATING_SUCCESS = 'CREATE_RATING_SUCCESS'; 
   // static CREATE_RATING_FAILURE = 'CREATE_RATING_FAILURE'; 
+  static DELETE_RATING = 'DELETE_RATING';
 
   // static FAILED_DELETE_SITTER = 'FAILED_DELETE_SITTER'; 
  
@@ -31,6 +32,13 @@ export class UserActions {
       payload: newRating
     });
   }
+
+  deleteRating(ratingId: string) {
+    this.ngRedux.dispatch({
+      type: UserActions.DELETE_RATING,
+      payload: ratingId
+    });
+  } 
 
   // createSitter(sitter: Sitter):void {
   //   this.ngRedux.dispatch({
