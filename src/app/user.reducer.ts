@@ -14,19 +14,22 @@ export function userReducer(state: UserState = INITIAL_STATE, action: any) {
  switch (action.type) {
   // case UserActions.FAILED_DELETE_SITTER: // payload: string
   //   return tassign(state, {errorMessage: action.payload});
+    
+    case UserActions.ADD_RATING: { // action.payload : Rating
+      const pl = action.payload as IRating; // Get the payload
+      const ratingsCopy = [...state.ratings]; // Get a copy of the ratings
+      const index = state.ratings // Get the index of the rating with a matching id
+      .findIndex(sitter => sitter.id === pl.id);
+      
+      // If the index === -1, no match was found. Create new rating.
+      if ( index === -1 ) {
+        ratingsCopy.push(pl as IRating);
+      } else { // If the index was found, overwrite matching rating
+        ratingsCopy[index] = pl;
+      }
 
-  // case UserActions.UPDATE_SITTER: // action.payload : Sitter
-  //   // const updateArray = [...state.sitters];
-  //   const index = state.sitters.findIndex(sitter => sitter.sitterId === action.payload.sitterId);
-  //   // updateArray[index] = action.payload;
-  //   return state;
-  //   // return tassign(state, { sitters: state.sitters.set(index, action.payload)});
-
-  case UserActions.CREATE_RATING: // action.payload : Rating
-    const ratingsCopy = [...state.ratings];
-    ratingsCopy.push(action.payload as IRating);
-    // return Object.assign({}, state, { isLoading: true });
-    return tassign(state, { ratings: ratingsCopy });
+      return tassign(state, { ratings: ratingsCopy}); // Return new state
+  }
 
   // case UserActions.CREATE_SITTER_FAILURE:
   //   return tassign(state, { isLoading: false });

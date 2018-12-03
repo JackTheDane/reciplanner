@@ -19,23 +19,15 @@ export class UserActions {
 
   // static SET_IS_BABY = 'SET_IS_BABY'; 
   
-  static CREATE_RATING = 'CREATE_RATING'; 
+  static ADD_RATING = 'ADD_RATING'; 
   // static CREATE_RATING_SUCCESS = 'CREATE_RATING_SUCCESS'; 
   // static CREATE_RATING_FAILURE = 'CREATE_RATING_FAILURE'; 
 
-  // static UPDATE_SITTER = 'UPDATE_SITTER'; 
   // static FAILED_DELETE_SITTER = 'FAILED_DELETE_SITTER'; 
  
-  // updateSitter(id: String, updatedSitter: Sitter) {
-  //   this.ngRedux.dispatch({
-  //     type: SittersActions.UPDATE_SITTER,
-  //     payload: updatedSitter
-  //   });
-  // }
-
-  createRating(newRating: IRating) {
+  addRating(newRating: IRating) {
     this.ngRedux.dispatch({
-      type: UserActions.CREATE_RATING,
+      type: UserActions.ADD_RATING,
       payload: newRating
     });
   }

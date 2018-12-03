@@ -40,7 +40,7 @@ export class RatingComponent {
   handleStarClickChange(e: { rating: number }) {
     console.log('Click', e);
 
-    this.userActions.createRating({
+    this.userActions.addRating({
       id: this.id,
       rating: (e.rating * 20)
     });
