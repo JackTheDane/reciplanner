@@ -1,10 +1,7 @@
-
-// import { CrudService } from './crud.service';
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store';
 import { IRating } from './IRating';
-// import { Sitter } from './entities/sitter';
 
 @Injectable({
   providedIn: 'root'
@@ -22,23 +19,15 @@ export class UserActions {
   static ADD_RATING = 'ADD_RATING'; 
   // static CREATE_RATING_SUCCESS = 'CREATE_RATING_SUCCESS'; 
   // static CREATE_RATING_FAILURE = 'CREATE_RATING_FAILURE'; 
-  static DELETE_RATING = 'DELETE_RATING';
 
   // static FAILED_DELETE_SITTER = 'FAILED_DELETE_SITTER'; 
  
-  addRating(newRating: IRating) {
+  public addRating(newRating: IRating) {
     this.ngRedux.dispatch({
       type: UserActions.ADD_RATING,
       payload: newRating
     });
   }
-
-  deleteRating(ratingId: string) {
-    this.ngRedux.dispatch({
-      type: UserActions.DELETE_RATING,
-      payload: ratingId
-    });
-  } 
 
   // createSitter(sitter: Sitter):void {
   //   this.ngRedux.dispatch({

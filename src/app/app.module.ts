@@ -15,7 +15,7 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeCardContainerComponent } from './recipe-card-container/recipe-card-container.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PublisherContainerComponent } from './publisher-container/publisher-container.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { StarRatingModule } from 'angular-star-rating';
@@ -23,6 +23,9 @@ import { HtmlCharactersPipe } from './html-characters.pipe';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { QuerySuggestionsComponent } from './query-suggestions/query-suggestions.component';
 import { RatingComponent } from './rating/rating.component';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { RecipesService } from './recipes.service';
 
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, rootReducer } from './store';
@@ -54,9 +57,14 @@ import { IAppState, rootReducer } from './store';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     StarRatingModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService,
+    RecipesService
+  ],
   bootstrap: [AppComponent]
 })
 

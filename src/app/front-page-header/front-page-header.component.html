@@ -2,8 +2,8 @@
     
   <div class="header-content">
     
-      <div class="search-area  {{ searchAreaClasses }}">
-        <form [formGroup]="searchBar" class="search-area__form" (ngSubmit)="handleSubmit()" >
+      <div class="search-area">
+        <form [formGroup='searchBar'] class="search-area__form" (ngSubmit)="handleSubmit()" >
             <mat-form-field class="white-form-field text-center">
               <input formControlName="query" matInput placeholder="What's for dinner?" name="search-text" id="search-text">
             </mat-form-field>

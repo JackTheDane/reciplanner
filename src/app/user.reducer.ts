@@ -30,16 +30,6 @@ export function userReducer(state: UserState = INITIAL_STATE, action: any) {
 
       return tassign(state, { ratings: ratingsCopy}); // Return new state
     }
-
-    case UserActions.DELETE_RATING: { // action.payload : string = RatingId
-      const id = action.payload as string;
-      const ratingsCopy = [...state.ratings]; // Get a copy of the ratings
-      const index = ratingsCopy // Get the index of the rating with a matching id
-        .findIndex(sitter => sitter.id === id);
-
-      ratingsCopy.splice(index, 1); // Remove the rating that matches the index
-      return tassign(state, { ratings: ratingsCopy}); // Return new state      
-    }  
   
     default:
       return state;
