@@ -1,11 +1,14 @@
-// import { UserActions } from './user.actions';
-// import { IRating } from './IRating';
-// import { NgRedux } from '@angular-redux/store';
-// import { IAppState } from './store';
+import { UserActions } from './user.actions';
+import { IRating } from './IRating';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from './store';
+import { TestBed } from '@angular/core/testing';
 
 // describe('UserActions', () => {
 //   let actions: UserActions;
 //   let mockRedux: NgRedux<any>;
+
+//   beforeEach(() => TestBed.configureTestingModule({}));
 
 //   beforeEach( () => {
 //     mockRedux = new NgRedux();
