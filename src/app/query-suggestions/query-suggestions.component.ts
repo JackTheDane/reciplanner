@@ -38,30 +38,23 @@ export class QuerySuggestionsComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.suggestions.forEach(
-      (suggestion: Suggestion) => {
-        if (suggestion.title === this.query) {
-          suggestion.isSelected = true;
-        }
-      } 
-    );
+    this.updateSelectedSuggestion(this.query);
   }
-
+  
+  // TODO: Handle toggleOff
+  
   handleClick(suggestion: Suggestion) {
     this.router.navigate(['/search/' + suggestion.title]);
-    this.selectSuggestionCard(suggestion);
+    this.updateSelectedSuggestion(suggestion.title);
   }
-
-  selectSuggestionCard(selectedSuggestion: Suggestion) {
-    this.suggestions.forEach((suggestion: Suggestion) => {
-      if ( suggestion.isSelected ) {
-        suggestion.isSelected = false;
-      }
-
-      if ( suggestion.title === selectedSuggestion.title ) {
-        suggestion.isSelected = true;
-      }
-    });
+  
+  updateSelectedSuggestion(suggestionTitle: string) {
+    this.suggestions.forEach( (suggestion: Suggestion) => {
+        if (suggestion.title !== suggestionTitle) {
+          suggestion.isSelected = false;
+        } else {
+          suggestion.isSelected = true;
+        }
+      });
   }
-
 }

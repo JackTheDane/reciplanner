@@ -1,7 +1,15 @@
 <mat-card>
 
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10,10"></feGaussianBlur>
+      </filter>
+    </defs>
+  </svg> -->
+
   <a class="recipe-card__link" routerLink="/recipe/{{ recipe_id }}">
-    <div class="card-image" [ngStyle]="getBackgroundImage()"></div>
+    <div class="recipe-card__image" [ngStyle]="getBackgroundImage()"></div>
   </a>
 
   <mat-card-content>
@@ -23,7 +31,6 @@
         [hoverEnabled]="true"
         staticColor="positive"
         [rating]="(social_rank+5)/20"
-        (click)="test($event)"
         (starClickChange)="handleStarClickChange($event)"
         (hoverRatingChange)="handleStarHoverChange($event)"
       >

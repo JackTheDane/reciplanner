@@ -2,7 +2,12 @@
   <mat-spinner ></mat-spinner>
 </div>
 
-<div class="recipe-card-container" *ngIf="!isLoading">
+<div class="noRecipesMessage" *ngIf="!isLoading && numberOfResponses === 0">
+  Sorry, no recipes matched your search. Please try another.
+</div>
+
+
+<div class="recipe-card-container" *ngIf="!isLoading && numberOfResponses > 0">
     <app-recipe-card 
       *ngFor="let recipe of recipes$"
       title="{{ recipe.title }}" 
@@ -16,5 +21,3 @@
     </app-recipe-card>
 
 </div>
-
-<!-- TODO: Add pagination functionality. -->

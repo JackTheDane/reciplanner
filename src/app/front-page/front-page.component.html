@@ -8,12 +8,14 @@
   <app-recipe-card-container
     [recipes$]="recipes$"
     [isLoading]="isLoading"
+    [numberOfResponses]="numberOfResponses"
   ></app-recipe-card-container>
 
   <app-paginator
     [query]="query"
     [pageNumber]="pageNumber"
-    [showNextPage]="numberOfResponses >= 30"
+    [numberOfResponses]="numberOfResponses"
+    [isLoading]="isLoading"
   ></app-paginator>
 
 </div>

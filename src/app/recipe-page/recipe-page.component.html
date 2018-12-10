@@ -4,19 +4,26 @@
     <img [src]="getImgSrc()" alt="{{ recipe$.title }}">
   </div>
 
-  <mat-dialog-content>
-    <div class="recipe-page__header">
-      <h3 mat-dialog-title>
-        {{ recipe$.title }}
-      </h3>
+  <div class="recipe-page__content">
     
-      <app-publisher-container
-        publisher = "{{ recipe$.publisher }}"
-        publisher_url = "{{ recipe$.publisher_url }}"
-        source_url = "{{ recipe$.source_url }}"
-      ></app-publisher-container>
-    </div>
+    <h3 class="recipe-page__title">
+      {{ recipe$.title }}
+    </h3>
+    <app-publisher-container
+      publisher = "{{ recipe$.publisher }}"
+      publisher_url = "{{ recipe$.publisher_url }}"
+      source_url = "{{ recipe$.source_url }}"
+      image_size = "{{ 32 }}"
+    ></app-publisher-container>
 
-  </mat-dialog-content>
+    <h5 class="recipe-page__sub-title">
+      Ingredients
+    </h5>
+
+    <mat-list>
+      <mat-list-item *ngFor="let ingr of recipe$.ingredients"> {{ingr}}</mat-list-item>
+    </mat-list>
+
+  </div>
 
 </div>

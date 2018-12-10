@@ -12,6 +12,9 @@ export class RecipeCardContainerComponent implements OnInit {
 
   @Input()
   recipes$: Array<BasicRecipe>;
+
+  @Input()
+  numberOfResponses: number;
   
   @Input()
   isLoading: boolean;

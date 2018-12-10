@@ -14,7 +14,10 @@ export class PaginatorComponent implements OnInit {
   query: string;
 
   @Input()
-  showNextPage: boolean;
+  numberOfResponses: number;
+
+  @Input()
+  isLoading: boolean;
 
   constructor () {}
 

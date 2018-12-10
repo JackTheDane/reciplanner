@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './front-page-header.component.html',
   styleUrls: ['./front-page-header.component.scss']
 })
-export class FrontPageHeaderComponent implements OnInit {
+export class FrontPageHeaderComponent implements OnInit, OnChanges {
 
   @Input()
   query: string;
@@ -17,12 +17,22 @@ export class FrontPageHeaderComponent implements OnInit {
   });
   
   constructor ( private router: Router ) {}
+  
+  ngOnChanges(changes: SimpleChanges) {
+    const query = changes.query;
+
+    if ( query.previousValue !== query.currentValue ) {
+      this.searchBar.controls['query'].setValue( this.query );
+    }
+  }
 
   ngOnInit() {
     if ( this.query !== null && this.query !== '' ) {
       this.searchBar.controls['query'].setValue( this.query );
     }
   }
+
+
 
   handleSubmit() {
     this.query = this.searchBar.value.query;
