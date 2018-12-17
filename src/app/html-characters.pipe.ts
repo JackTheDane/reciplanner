@@ -8,7 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class HtmlCharactersPipe implements PipeTransform {
   private htmlCharCodes: { code: string; character: string; }[] = [
     {
-      code: '&amp',
+      code: '&amp;',
       character: '&'
     },
     {

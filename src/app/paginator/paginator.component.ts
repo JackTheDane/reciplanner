@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PaginatorComponent implements OnInit {
 
   @Input()
-  pageNumber = 1;
+  pageNumber;
 
   @Input()
   query: string;
@@ -19,10 +19,13 @@ export class PaginatorComponent implements OnInit {
   constructor () {}
 
   ngOnInit() {
+    if (!this.pageNumber) {
+      this.pageNumber = 1;
+    }
   }
 
   public getRouterLink(pageDifference: number) {
-    const pageToLinkTo = +this.pageNumber + pageDifference;
+    const pageToLinkTo = Number(this.pageNumber) + pageDifference;
     let routerLink = '/page/' + pageToLinkTo;
 
     if ( this.query ) {

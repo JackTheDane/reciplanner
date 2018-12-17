@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.import';
 import { FrontPageComponent } from './front-page/front-page.component';
-import { CreateUserComponent } from './create-user/create-user.component';
 import { MyReciplansComponent } from './my-reciplans/my-reciplans.component';
 import { FrontPageHeaderComponent } from './front-page-header/front-page-header.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
@@ -36,7 +35,6 @@ import { IAppState, rootReducer } from './store';
     AppComponent,
     NavbarComponent,
     FrontPageComponent,
-    CreateUserComponent,
     MyReciplansComponent,
     FrontPageHeaderComponent,
     RecipeCardComponent,
