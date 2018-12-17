@@ -2,7 +2,7 @@ import { routerReducer } from '@angular-redux/router';
 import { combineReducers } from 'redux';
 import { userReducer } from './user.reducer';
 
-import { IRating } from './IRating';
+import { IRating } from './types/IRating';
 
 export class UserState {
   name?: string;

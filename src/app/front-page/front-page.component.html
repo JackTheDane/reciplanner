@@ -2,7 +2,6 @@
 
   <app-front-page-header [query]="query"></app-front-page-header>
 
-  <!-- #TODO: Suggestion panel -->
   <app-query-suggestions [query]="query" ></app-query-suggestions>
 
   <div>
@@ -18,6 +17,7 @@
     [query]="query"
     [pageNumber]="pageNumber"
     [showNextPage]="numberOfResponses >= 30"
+    *ngIf="!isLoading"
   ></app-paginator>
 
 </div>

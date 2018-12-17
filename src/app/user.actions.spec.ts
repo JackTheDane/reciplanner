@@ -1,5 +1,5 @@
 import { UserActions } from './user.actions';
-import { IRating } from './IRating';
+import { IRating } from './types/IRating';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store';
 import { TestBed } from '@angular/core/testing';

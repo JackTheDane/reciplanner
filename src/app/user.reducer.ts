@@ -2,7 +2,7 @@
 import { tassign } from 'tassign';
 import { UserActions } from './user.actions';
 import { UserState } from './store';
-import { IRating } from './IRating';
+import { IRating } from './types/IRating';
 
 const INITIAL_STATE: UserState = {
   name: 'Bob',

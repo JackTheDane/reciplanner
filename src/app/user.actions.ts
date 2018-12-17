@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store';
-import { IRating } from './IRating';
+import { IRating } from './types/IRating';
 
 @Injectable({
   providedIn: 'root'

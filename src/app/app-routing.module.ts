@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { MyReciplansComponent } from './my-reciplans/my-reciplans.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -35,16 +34,12 @@ const routes: Routes = [
     component: FrontPageComponent
   },
   {
-    path: 'my-reciplans',
+    path: 'reciplans',
     component: MyReciplansComponent
   },
   {
     path: 'recipe/:id',
     component: RecipePageComponent
-  },
-  {
-    path: 'admin',
-    component: AdminPageComponent
   }
 ];
 
