@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <h1 class="text-center">
+    Register
+  </h1>
+  
+  <form [formGroup]='registerForm' class="form" (ngSubmit)="handleSubmit($event)" >
+  
+      <mat-form-field class="">
+        <input 
+          formControlName="username" 
+          matInput 
+          placeholder="Your username" 
+          name="username" 
+        >
+      </mat-form-field>
+  
+      <mat-form-field class="">
+        <input 
+          formControlName="password" 
+          matInput 
+          placeholder="Your password" 
+          name="password" 
+        >
+      </mat-form-field>
+  
+      <mat-form-field class="">
+        <input 
+          formControlName="repeatedPassword" 
+          matInput 
+          placeholder="Repeat password"
+          name="repeatedPassword" 
+        >
+      </mat-form-field>
+  
+    <button mat-raised-button color="accent" type="submit" style="margin-top: 10px">
+      Register
+    </button>
+  </form>
+</div>

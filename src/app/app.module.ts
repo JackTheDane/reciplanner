@@ -28,6 +28,8 @@ import { RecipesService } from './recipes.service';
 
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, rootReducer } from './store';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { IAppState, rootReducer } from './store';
     HtmlCharactersPipe,
     PaginatorComponent,
     QuerySuggestionsComponent,
-    RatingComponent
+    RatingComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

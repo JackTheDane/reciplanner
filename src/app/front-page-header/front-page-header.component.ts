@@ -19,7 +19,7 @@ export class FrontPageHeaderComponent implements OnInit {
   constructor ( private router: Router ) {}
 
   ngOnInit() {
-    if ( this.query !== null && this.query !== '' ) {
+    if ( this.query && this.query !== '' ) {
       this.searchBar.controls['query'].setValue( this.query );
     }
   }
@@ -27,7 +27,7 @@ export class FrontPageHeaderComponent implements OnInit {
   handleSubmit() {
     this.query = this.searchBar.value.query;
 
-    if ( this.query !== null && this.query !== '' ) {
+    if ( this.query && this.query !== '' ) {
       this.router.navigate(['/search/' + this.query]);
     } else {
       this.router.navigate( [''] );
