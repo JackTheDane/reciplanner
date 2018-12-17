@@ -17,10 +17,6 @@ export class UserActions {
   // static SET_IS_BABY = 'SET_IS_BABY'; 
   
   static ADD_RATING = 'ADD_RATING'; 
-  // static CREATE_RATING_SUCCESS = 'CREATE_RATING_SUCCESS'; 
-  // static CREATE_RATING_FAILURE = 'CREATE_RATING_FAILURE'; 
-
-  // static FAILED_DELETE_SITTER = 'FAILED_DELETE_SITTER'; 
  
   public addRating(newRating: IRating) {
     this.ngRedux.dispatch({

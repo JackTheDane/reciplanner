@@ -16,8 +16,13 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  registerNewUser(userInfo: IUserLoginInfo): Observable<IUserLoginInfo> {
+  registerNewUser(userInfo: IUserLoginInfo): Observable<any> {
     const url = coreApiUrl + '/create-user';
-    return this.http.post<IUserLoginInfo>(url, userInfo);
+    return this.http.post(url, JSON.stringify(userInfo));
+  }
+
+  attemptLogin(userInfo: IUserLoginInfo): Observable<any> {
+    const url = coreApiUrl + '/login';
+    return this.http.post(url, JSON.stringify(userInfo));
   }
 }
