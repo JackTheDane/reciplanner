@@ -5,16 +5,7 @@
 <div class="recipe-card-container" *ngIf="!isLoading">
     <app-recipe-card 
       *ngFor="let recipe of recipes$"
-      title="{{ recipe.title }}" 
-      image_url="{{ recipe.image_url }}" 
-      recipe_id="{{ recipe.recipe_id }}" 
-      social_rank=" {{ recipe.social_rank }} "
-      publisher="{{ recipe.publisher }}" 
-      publisher_url="{{ recipe.publisher_url }}"
-      source_url="{{ recipe.source_url }}"
+      [recipe]="recipe"
     >
     </app-recipe-card>
-
 </div>
-
-<!-- TODO: Add pagination functionality. -->

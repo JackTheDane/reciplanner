@@ -1,29 +1,36 @@
 import { Injectable } from '@angular/core';
 import {
-  CanActivate, Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  Router,
+  CanActivate, 
+  // RouterStateSnapshot,
+  // ActivatedRouteSnapshot
 } from '@angular/router';
 import { AuthService } from './auth.service';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from './store';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private ngRedux: NgRedux<IAppState>
+  ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const url: string = state.url;
+  canActivate(): Promise<boolean> {
 
-    return this.checkLogin(url);
-  }
-
-  checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
-
-    // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
-
-    // Navigate to the login page with extras
-    this.router.navigate(['/login']);
-    return false;
+    return new Promise( (resolve) => {
+      this.ngRedux
+        .select(res => res.userInfo.isLoggedIn)
+        .subscribe((logInStatus: boolean) => {
+          if (logInStatus) {
+            resolve(true);
+          } else {
+            this.router.navigate(['/join']);
+            resolve(false);
+          }
+        },
+        error => { resolve(false); }); 
+    });
   }
 }

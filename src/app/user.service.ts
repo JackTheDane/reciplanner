@@ -21,8 +21,4 @@ export class UserService {
     return this.http.post(url, JSON.stringify(userInfo));
   }
 
-  attemptLogin(userInfo: IUserLoginInfo): Observable<any> {
-    const url = coreApiUrl + '/login';
-    return this.http.post(url, JSON.stringify(userInfo));
-  }
 }

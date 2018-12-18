@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { RatingComponent } from '../rating/rating.component';
+import { BasicRecipe } from '../types/recipe-basic';
+import { AppActions } from '../app.actions';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store';
 
 @Component({
   selector: 'app-recipe-card',
@@ -10,42 +13,53 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RecipeCardComponent implements OnInit {
 
   @Input()
-  recipe_id: string;
+  recipe: BasicRecipe;
+
+  public isFavorite = false;
+
+  constructor(
+    private appActions: AppActions,
+    private ngRedux: NgRedux<IAppState>
+  ) {
+    this.ngRedux
+      .select(res => res.userInfo.savedRecipes)
+      .subscribe(
+        (savedRecipes: BasicRecipe[]) => {
+
+          if (savedRecipes) {
+            console.log(savedRecipes);
+            console.log( savedRecipes.map( e => e.title ) );
   
-  @Input()
-  title: string;
+            savedRecipes.forEach( reci => {
+              this.isFavorite = reci.recipe_id === this.recipe.recipe_id;
+            });
+          }
 
-  @Input()
-  image_url: string;
-
-  @Input()
-  social_rank: number;
-
-  @Input()
-  publisher: string;
-
-  @Input()
-  source_url: string;
-
-  @Input()
-  publisher_url: string;
-
-  ngOnInit() {
-    this.social_rank = Math.round( this.social_rank );
+          // console.log( savedRecipes.some( rec => rec.recipe_id === this.recipe.recipe_id ) );
+          // this.isFavorite = !savedRecipes.some( rec => rec.recipe_id === this.recipe.recipe_id ) ? false : true;
+        },
+        error => console.log(error)
+      );
   }
+
+  ngOnInit() {}
 
   getBackgroundImage() {
     return {
-      'background-image' : 'url(' + this.image_url + ')'
+      'background-image' : 'url(' + this.recipe.image_url + ')'
     };
   }
 
   getTitleText() {
-    if ( this.title.length > 45 ) {
-      return this.title.substr(0, 43) + '...';
+    if ( this.recipe.title.length > 45 ) {
+      return this.recipe.title.substr(0, 43) + '...';
     }
 
-    return this.title;
+    return this.recipe.title;
   }
 
+  public saveRecipe() {
+    console.log(this.recipe);
+    this.appActions.saveRecipe(this.recipe);
+  }
 }

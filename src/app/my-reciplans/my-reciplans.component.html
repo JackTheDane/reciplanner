@@ -1,3 +1,10 @@
-<p>
-  my-reciplans works!
-</p>
+<div class="wrapper">
+
+  <!-- <app-recipe-card 
+    *ngFor="let recipe of recipes$"
+    [recipe]="recipe"
+  > </app-recipe-card> -->
+
+  <app-recipe-card-container [recipes$]="recipes$" [isLoading]="false"></app-recipe-card-container>
+
+</div>

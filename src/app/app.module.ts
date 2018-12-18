@@ -86,8 +86,10 @@ export class AppModule {
     this.ngRedux.configureStore(
       rootReducer, {
         userInfo: {
-          isLoggedIn: false,
-          ratings: []
+          isLoggedIn: true,
+          name: 'bob',
+          ratings: [],
+          savedRecipes: []
         }
       }
     );

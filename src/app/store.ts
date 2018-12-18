@@ -1,12 +1,14 @@
 import { routerReducer } from '@angular-redux/router';
 import { combineReducers } from 'redux';
-import { userReducer } from './user.reducer';
+import { appReducer } from './app.reducer';
 
 import { IRating } from './types/IRating';
+import { BasicRecipe } from './types/recipe-basic';
 
 export class UserState {
   name?: string;
   ratings: IRating[];
+  savedRecipes: BasicRecipe[];
   isLoggedIn: boolean;
 }
 
@@ -15,5 +17,5 @@ export class IAppState {
 }
 
 export const rootReducer = combineReducers<IAppState>({
-  userInfo: userReducer
+  userInfo: appReducer
 });

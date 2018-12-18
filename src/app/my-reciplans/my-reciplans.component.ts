@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AppActions } from '../app.actions';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store';
+import { BasicRecipe } from '../types/recipe-basic';
 
 @Component({
   selector: 'app-my-reciplans',
@@ -7,7 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyReciplansComponent implements OnInit {
 
-  constructor() { }
+  recipes$: BasicRecipe[];
+
+  constructor(
+    private appActions: AppActions,
+    private ngRedux: NgRedux<IAppState>
+  ) {
+    // this.appActions.
+    this.ngRedux
+        .select(res => res.userInfo.savedRecipes)
+        .subscribe((savedRecipes: BasicRecipe[]) => {
+          console.log(savedRecipes);
+          this.recipes$ = savedRecipes;
+        },
+        error => {
+          console.log('Error getting saved recipes ', error);
+        }); 
+  }
 
   ngOnInit() {
   }
