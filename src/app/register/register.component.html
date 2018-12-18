@@ -10,8 +10,9 @@
           formControlName="username" 
           matInput 
           placeholder="Your username" 
-          name="username" 
-        >
+          name="username"
+          required
+          >
       </mat-form-field>
   
       <mat-form-field class="">
@@ -33,6 +34,10 @@
           type="password"
         >
       </mat-form-field>
+
+        <div *ngIf="checkForErrors()">
+          {{getErrorMessage()}}
+        </div>
   
     <button mat-raised-button color="accent" type="submit" style="margin-top: 10px">
       Register

@@ -1,10 +1,20 @@
 <div class="wrapper">
 
-  <!-- <app-recipe-card 
-    *ngFor="let recipe of recipes$"
-    [recipe]="recipe"
-  > </app-recipe-card> -->
+  <form [formGroup]='filterBar' class="filter-form" >
+      <mat-form-field class="white-form-field">
+        <input 
+          formControlName="filter" 
+          matInput 
+          placeholder="Filter names" 
+          name="filter" 
+          (keyup)="handleFilterChange()"
+        >
+      </mat-form-field>
+  </form>
 
-  <app-recipe-card-container [recipes$]="recipes$" [isLoading]="false"></app-recipe-card-container>
+  <app-recipe-card-container 
+    [recipes$]="recipes$ | filterByString : filterByString" 
+    [isLoading]="false"
+  ></app-recipe-card-container>
 
 </div>

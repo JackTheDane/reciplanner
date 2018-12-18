@@ -3,6 +3,7 @@ import { AppActions } from '../app.actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { BasicRecipe } from '../types/recipe-basic';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-my-reciplans',
@@ -12,6 +13,11 @@ import { BasicRecipe } from '../types/recipe-basic';
 export class MyReciplansComponent implements OnInit {
 
   recipes$: BasicRecipe[];
+  filterByString = '';
+
+  filterBar = new FormGroup({
+    filter : new FormControl('')
+  });
 
   constructor(
     private appActions: AppActions,
@@ -30,6 +36,11 @@ export class MyReciplansComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  handleFilterChange() {
+    console.log(this.filterBar.value.filter);
+    this.filterByString = this.filterBar.value.filter;
   }
 
 }

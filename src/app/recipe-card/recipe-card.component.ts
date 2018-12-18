@@ -20,29 +20,21 @@ export class RecipeCardComponent implements OnInit {
   constructor(
     private appActions: AppActions,
     private ngRedux: NgRedux<IAppState>
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.ngRedux
       .select(res => res.userInfo.savedRecipes)
       .subscribe(
         (savedRecipes: BasicRecipe[]) => {
 
-          if (savedRecipes) {
-            console.log(savedRecipes);
-            console.log( savedRecipes.map( e => e.title ) );
-  
-            savedRecipes.forEach( reci => {
-              this.isFavorite = reci.recipe_id === this.recipe.recipe_id;
-            });
+          if (savedRecipes && this.recipe) {
+            this.isFavorite = !savedRecipes.some( rec => rec.recipe_id === this.recipe.recipe_id ) ? false : true;
           }
-
-          // console.log( savedRecipes.some( rec => rec.recipe_id === this.recipe.recipe_id ) );
-          // this.isFavorite = !savedRecipes.some( rec => rec.recipe_id === this.recipe.recipe_id ) ? false : true;
         },
         error => console.log(error)
       );
   }
-
-  ngOnInit() {}
 
   getBackgroundImage() {
     return {
@@ -59,7 +51,10 @@ export class RecipeCardComponent implements OnInit {
   }
 
   public saveRecipe() {
-    console.log(this.recipe);
     this.appActions.saveRecipe(this.recipe);
+  }
+
+  public removeRecipe() {
+    this.appActions.removeSavedRecipe(this.recipe.recipe_id);
   }
 }

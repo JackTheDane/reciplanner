@@ -22,6 +22,7 @@ export class AppActions {
   static SET_LOGIN = 'SET_LOGIN';
 
   static ADD_SAVED_RECIPE = 'ADD_SAVED_RECIPE';
+  static REMOVE_SAVED_RECIPE = 'REMOVE_SAVED_RECIPE';
  
   public addRating(newRating: IRating) {
     this.ngRedux.dispatch({
@@ -41,6 +42,13 @@ export class AppActions {
     this.ngRedux.dispatch({
       type: AppActions.ADD_SAVED_RECIPE,
       payload: recipe
+    });
+  }
+
+  public removeSavedRecipe(recipe_id: string) {
+    this.ngRedux.dispatch({
+      type: AppActions.REMOVE_SAVED_RECIPE,
+      payload: recipe_id
     });
   }
 

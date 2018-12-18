@@ -43,6 +43,14 @@ export function appReducer(state: UserState = INITIAL_STATE, action: {type: stri
       }
       return tassign(state, {savedRecipes: recipes});
     }
+
+    case AppActions.REMOVE_SAVED_RECIPE: { // action.payload: recipe_id: string
+      let recipes = [...state.savedRecipes];
+
+      recipes = recipes.filter( rec => rec.recipe_id !== action.payload);
+
+      return tassign(state, {savedRecipes: recipes});
+    }
   
     default:
       return state;
