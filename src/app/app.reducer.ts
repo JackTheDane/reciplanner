@@ -49,6 +49,9 @@ export function appReducer(state: UserState = INITIAL_STATE, action: {type: stri
 
       recipes = recipes.filter( rec => rec.recipe_id !== action.payload);
 
+      console.log('Init ', state.savedRecipes);
+      console.log('filtered ', recipes);
+
       return tassign(state, {savedRecipes: recipes});
     }
   

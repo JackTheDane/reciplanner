@@ -10,7 +10,8 @@
         formControlName="username" 
         matInput 
         placeholder="Your username" 
-        name="username" 
+        name="username"
+        class="username"
       >
     </mat-form-field>
 
@@ -20,11 +21,12 @@
         matInput 
         placeholder="Your password" 
         name="password"
+        class="password"
         type="password"
       >
     </mat-form-field>
     
-    <button mat-raised-button color="accent" type="submit" style="margin-top: 10px" *ngIf="!isLoading">
+    <button mat-raised-button class="login-button" color="accent" type="submit" style="margin-top: 10px" *ngIf="!isLoading">
       Register
     </button>
 

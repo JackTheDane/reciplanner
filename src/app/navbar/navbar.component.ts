@@ -20,9 +20,12 @@ export class NavbarComponent implements OnInit {
   ) {
     this.ngRedux.select( res => res.userInfo).subscribe(
       (info) => {
-        const name: string = info.name[0].toUpperCase() + info.name.substr(1);
         this.isLoggedIn = info.isLoggedIn;
-        this.name = name;
+
+        if (info.name) {
+          const name: string = info.name[0].toUpperCase() + info.name.substr(1);
+          this.name = name;
+        }
       }
     );
   }

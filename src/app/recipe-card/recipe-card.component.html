@@ -30,6 +30,7 @@
       style="color: white;"
       (click)="saveRecipe()"
       *ngIf="!isFavorite"
+      class="save-recipe-button"
     >
       Save
     </a>
@@ -40,6 +41,8 @@
       style="color: white;"
       (click)="removeRecipe()"
       *ngIf="isFavorite"
+      class="save-recipe-button"
+      class="remove-recipe-button"
     >
       Remove
     </a>
