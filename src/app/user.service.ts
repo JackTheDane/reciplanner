@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { coreApiUrl } from './config';
 import { Observable } from 'rxjs';
+import { IUserLoginInfo } from './types/IUserLoginInfo';
 
-export interface IUserLoginInfo {
-  username: string;
-  password: string;
-}
+
 
 @Injectable({
   providedIn: 'root'
