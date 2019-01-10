@@ -25,8 +25,6 @@ export class FrontPageComponent {
   pageNumber = 1;
   numberOfResponses: number;
   isLoading: boolean;
-  temp: any;
-
   
   constructor ( 
     private data: RecipesService, 
@@ -37,10 +35,6 @@ export class FrontPageComponent {
 
       this.pageNumber = params.pageNumber;
       this.query = params.query;
-
-      ngRedux.select( res => res.userInfo.ratings ).subscribe( ratings => {
-        this.temp = ratings.map( e => `Id: ${e.id} and rating: ${e.rating}` ).join('    ');
-      });
 
       this.isLoading = true;
 

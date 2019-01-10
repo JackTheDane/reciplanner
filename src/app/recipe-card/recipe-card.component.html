@@ -1,27 +1,50 @@
 <mat-card>
 
-  <a class="recipe-card__link" routerLink="/recipe/{{ recipe_id }}">
+  <a class="recipe-card__link" routerLink="/recipe/{{ recipe.recipe_id }}">
     <div class="card-image" [ngStyle]="getBackgroundImage()"></div>
   </a>
 
   <mat-card-content>
-    <a class="recipe-card__title-link" routerLink="/recipe/{{ recipe_id }}">
+    <a class="recipe-card__title-link" routerLink="/recipe/{{ recipe.recipe_id }}">
       <mat-card-title>{{ getTitleText() | htmlCharacters }}</mat-card-title>
     </a>
-
+    
     <div class="recipe-card__sub-content">
       <app-rating
-        [social_rank]="social_rank"
-        [id]="recipe_id"
+        [social_rank]="recipe.social_rank"
+        [id]="recipe.recipe_id"
       > </app-rating>
   
       <app-publisher-container
-        publisher = "{{ publisher }}"
-        publisher_url = "{{ publisher_url }}"
-        source_url = "{{ source_url }}"
+        publisher = "{{ recipe.publisher }}"
+        publisher_url = "{{ recipe.publisher_url }}"
+        source_url = "{{ recipe.source_url }}"
         image_size = 30
-      ></app-publisher-container>
-    </div>
+        ></app-publisher-container>
+      </div>
 
-  </mat-card-content>
+    </mat-card-content>
+    <a
+      mat-raised-button 
+      color="primary" 
+      style="color: white;"
+      (click)="saveRecipe()"
+      *ngIf="!isFavorite"
+      class="save-recipe-button"
+    >
+      Save
+    </a>
+
+    <a
+      mat-raised-button 
+      color="warn" 
+      style="color: white;"
+      (click)="removeRecipe()"
+      *ngIf="isFavorite"
+      class="save-recipe-button"
+      class="remove-recipe-button"
+    >
+      Remove
+    </a>
+
 </mat-card>

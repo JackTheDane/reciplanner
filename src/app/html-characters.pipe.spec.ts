@@ -12,9 +12,9 @@ describe('HtmlCharactersPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('be able to transform &, ®, © and \' ', () => {
+  it('should be able to transform &, ®, © and \' ', () => {
 
-    const encodedString = '&amp &amp &#174; &#174; &#169; &#169; &#8217; &#8217;';
+    const encodedString = '&amp; &amp; &#174; &#174; &#169; &#169; &#8217; &#8217;';
     const expectedDecodedString = '& & ® ® © © \' \'';
 
     expect(pipe.transform(encodedString)).toBe(expectedDecodedString);
@@ -25,4 +25,6 @@ describe('HtmlCharactersPipe', () => {
 
     expect(pipe.transform(string)).toBe(string);
   }); 
+
+
 });

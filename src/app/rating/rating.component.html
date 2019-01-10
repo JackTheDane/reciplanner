@@ -1,6 +1,6 @@
 <star-rating 
   [starType]="'svg'" 
-  [labelText]="social_rank" 
+  [labelText]="(social_rank/20).toFixed(1)" 
   labelPosition="right"
   [showHalfStars]="true"
   [getHalfStarVisible]="getHalfStarVisible"

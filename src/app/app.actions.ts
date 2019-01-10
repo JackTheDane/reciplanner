@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store';
 import { IRating } from './types/IRating';
+import { BasicRecipe } from './types/recipe-basic';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserActions {
+export class AppActions {
 
   constructor (
     private ngRedux: NgRedux<IAppState>, 
@@ -17,11 +18,37 @@ export class UserActions {
   // static SET_IS_BABY = 'SET_IS_BABY'; 
   
   static ADD_RATING = 'ADD_RATING'; 
+
+  static SET_LOGIN = 'SET_LOGIN';
+
+  static ADD_SAVED_RECIPE = 'ADD_SAVED_RECIPE';
+  static REMOVE_SAVED_RECIPE = 'REMOVE_SAVED_RECIPE';
  
   public addRating(newRating: IRating) {
     this.ngRedux.dispatch({
-      type: UserActions.ADD_RATING,
+      type: AppActions.ADD_RATING,
       payload: newRating
+    });
+  }
+
+  public setLoggedIn(status: boolean) {
+    this.ngRedux.dispatch({
+      type: AppActions.SET_LOGIN,
+      payload: status
+    });
+  }
+
+  public saveRecipe(recipe: BasicRecipe) {
+    this.ngRedux.dispatch({
+      type: AppActions.ADD_SAVED_RECIPE,
+      payload: recipe
+    });
+  }
+
+  public removeSavedRecipe(recipe_id: string) {
+    this.ngRedux.dispatch({
+      type: AppActions.REMOVE_SAVED_RECIPE,
+      payload: recipe_id
     });
   }
 

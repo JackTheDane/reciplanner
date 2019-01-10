@@ -3,13 +3,7 @@
     ReciPlanner
   </a>
 
-  <ul>
-    <!-- <li>
-      <a mat-button color="primary" routerLink="/my-reciplans"  routerLinkActive="router-link-active">
-        My Reciplans
-      </a>
-    </li> -->
-
+  <ul *ngIf="!isLoggedIn">
     <li>
       <a mat-button color="primary" routerLink="/sign-in"  routerLinkActive="router-link-active">
         Sign in
@@ -22,4 +16,30 @@
       </a>
     </li>
   </ul>
+
+  <ul *ngIf="isLoggedIn">
+
+    <li>
+      <button mat-button disabled *ngIf="name">Hi, {{name}}!</button>
+    </li>
+    
+    <li>
+      <a mat-button color="primary" (click)="onLogoutClick()">
+        Sign out
+      </a>
+    </li>
+
+    <li>
+      <a 
+        mat-raised-button 
+        color="accent" 
+        routerLink="/reciplans" 
+        routerLinkActive="router-link-active"
+        class="my-reciplans-button"
+      >
+        My Reciplans
+      </a>
+    </li>
+  </ul>
+
 </nav>

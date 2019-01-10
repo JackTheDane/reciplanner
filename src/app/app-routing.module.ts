@@ -16,22 +16,11 @@ const routes: Routes = [
   {
     path: 'page/:pageNumber',
     component: FrontPageComponent,
-    children: [
-      {
-        path: '',
-        component: FrontPageComponent,
-        pathMatch: 'full'
-      }
-    ]
   },
   {
     path: 'search/:query',
+    component: FrontPageComponent,
     children: [
-      {
-        path: '',
-        component: FrontPageComponent,
-        pathMatch: 'full'
-      },
       {
         path: 'page/:pageNumber',
         component: FrontPageComponent
