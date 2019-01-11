@@ -20,7 +20,6 @@ import { FrontPageHeaderComponent } from './front-page-header/front-page-header.
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeCardContainerComponent } from './recipe-card-container/recipe-card-container.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
@@ -52,7 +51,6 @@ import { FilterPipe } from './filter.pipe';
     RecipeCardComponent,
     RecipeCardContainerComponent,
     RecipePageComponent,
-    AdminPageComponent,
     PublisherContainerComponent,
     HtmlCharactersPipe,
     PaginatorComponent,
