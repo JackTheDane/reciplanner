@@ -1,5 +1,6 @@
 .suggestions {
   display: flex;
+  justify-content: space-between;
   margin: 30px auto;
   max-width: 1200px;
 
@@ -9,7 +10,7 @@
     align-items: center;
     flex-direction: column;
     
-    width: 90px;
+    max-width: 90px;
 
     cursor: pointer;
     opacity: 1;
@@ -36,7 +37,6 @@
   }
 
   &__image {
-    background-image: url("http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
