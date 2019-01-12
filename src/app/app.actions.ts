@@ -15,7 +15,6 @@ export class AppActions {
     // private crudService: CrudService
   ) {} 
 
-  // static SET_IS_BABY = 'SET_IS_BABY'; 
   
   static ADD_RATING = 'ADD_RATING'; 
 
@@ -23,6 +22,8 @@ export class AppActions {
 
   static ADD_SAVED_RECIPE = 'ADD_SAVED_RECIPE';
   static REMOVE_SAVED_RECIPE = 'REMOVE_SAVED_RECIPE';
+
+  
  
   public addRating(newRating: IRating) {
     this.ngRedux.dispatch({

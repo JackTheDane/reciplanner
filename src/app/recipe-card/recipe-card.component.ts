@@ -36,25 +36,45 @@ export class RecipeCardComponent implements OnInit {
       );
   }
 
-  getBackgroundImage() {
+  // TODO: Improve function use
+  // TODO: Make favorite button into its own component
+  
+  private getBackgroundImage() {
     return {
       'background-image' : 'url(' + this.recipe.image_url + ')'
     };
   }
+  
+  public getFavoriteButtonColor(): string {
+    return !this.isFavorite
+    ? 'primary'
+    : 'accent';
+  }
+  
+  public getFavoriteButtonTitle(): string {
+    return !this.isFavorite
+    ? 'Add to favorites'
+    : 'Remove from favorites';
+  }
+  
+  public getFavoriteButtonIcon(): string {
+    return !this.isFavorite
+    ? 'bookmark_border'
+    : 'bookmark';
+  }
+  
+  // BUG: Setting class breaks 
+  public getFavoriteButtonClass(): string {
+    return !this.isFavorite
+      ? 'favoriteButton'
+      : 'unFavoriteButton';
+  }
 
-  getTitleText() {
-    if ( this.recipe.title.length > 45 ) {
-      return this.recipe.title.substr(0, 43) + '...';
+  public toggleFavorite() {
+    if (!this.isFavorite) {
+      this.appActions.saveRecipe(this.recipe);
+    } else {
+      this.appActions.removeSavedRecipe(this.recipe.recipe_id);
     }
-
-    return this.recipe.title;
-  }
-
-  public saveRecipe() {
-    this.appActions.saveRecipe(this.recipe);
-  }
-
-  public removeRecipe() {
-    this.appActions.removeSavedRecipe(this.recipe.recipe_id);
   }
 }
