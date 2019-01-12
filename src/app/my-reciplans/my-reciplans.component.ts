@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppActions } from '../app.actions';
+import { AppActions } from '../user.actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { BasicRecipe } from '../types/recipe-basic';
+import { BasicRecipe } from '../types/BasicRecipe';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({

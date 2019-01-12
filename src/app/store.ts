@@ -1,21 +1,33 @@
-import { routerReducer } from '@angular-redux/router';
+// import { routerReducer } from '@angular-redux/router';
 import { combineReducers } from 'redux';
-import { appReducer } from './app.reducer';
 
+// Reducers
+import { UserReducer } from './user.reducer';
+
+// Types
 import { IRating } from './types/IRating';
-import { BasicRecipe } from './types/recipe-basic';
+import { BasicRecipe } from './types/BasicRecipe';
+import { FullRecipe } from './types/FullRecipe';
+import { CacheReducer } from './cache.reducer';
 
-export class UserState {
+export interface UserState {
   name?: string;
   ratings: IRating[];
   savedRecipes: BasicRecipe[];
   isLoggedIn: boolean;
 }
 
-export class IAppState {
+export interface CacheState {
+  query: string;
+  recipes: FullRecipe[];
+}
+
+export interface IAppState {
   userInfo: UserState;
+  recipeCache: CacheState;
 }
 
 export const rootReducer = combineReducers<IAppState>({
-  userInfo: appReducer
+  userInfo: UserReducer,
+  recipeCache: CacheReducer
 });

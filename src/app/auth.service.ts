@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUserLoginInfo } from './types/IUserLoginInfo';
 import { coreApiUrl } from './config';
-import { AppActions } from './app.actions';
+import { AppActions } from './user.actions';
 
 
 // import { IAPIResponse } from './types/IAPIResponse';

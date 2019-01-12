@@ -89,7 +89,8 @@ export class AppModule {
           isLoggedIn: false,
           name: '',
           ratings: [],
-          savedRecipes: []
+          savedRecipes: [],
+          cachedRecipes: []
         }
       }
     );

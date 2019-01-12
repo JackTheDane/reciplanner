@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { RecipesService } from '../recipes.service';
-import { BasicRecipe } from '../types/recipe-basic';
+import { BasicRecipe } from '../types/BasicRecipe';
 
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';

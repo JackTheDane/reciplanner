@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IAppState } from '../store';
-import { AppActions } from '../app.actions';
+import { AppActions } from '../user.actions';
 
 @Component({
   selector: 'app-rating',

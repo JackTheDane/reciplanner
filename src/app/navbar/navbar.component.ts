@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { AppActions } from '../app.actions';
+import { AppActions } from '../user.actions';
 
 @Component({
   selector: 'app-navbar',

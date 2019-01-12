@@ -1,6 +1,6 @@
 const deepFreeze = require('deep-freeze');
-import { appReducer } from './app.reducer';
-import { AppActions } from './app.actions';
+import { userReducer } from './user.reducer';
+import { UserActions } from './user.actions';
 import { UserState, IAppState } from './store';
 
 describe( 'app reducer', () => {
@@ -49,7 +49,7 @@ describe( 'app reducer', () => {
 
     deepFreeze(state);
 
-    expect( appReducer(state, {type: AppActions.ADD_SAVED_RECIPE, payload: extraRecipe}) ).toEqual(expectedResult);
+    expect( userReducer(state, {type: UserActions.ADD_SAVED_RECIPE, payload: extraRecipe}) ).toEqual(expectedResult);
   });
 
   // Remove recipe
@@ -63,7 +63,7 @@ describe( 'app reducer', () => {
 
     deepFreeze(state);
 
-    expect( appReducer(state, {type: AppActions.REMOVE_SAVED_RECIPE, payload: '47024'}) ).toEqual(expectedResult);
+    expect( userReducer(state, {type: UserActions.REMOVE_SAVED_RECIPE, payload: '47024'}) ).toEqual(expectedResult);
   });
 
   // Log in
@@ -75,7 +75,7 @@ describe( 'app reducer', () => {
 
     deepFreeze(state);
 
-    expect( appReducer(state, {type: AppActions.SET_LOGIN, payload: true}) ).toEqual(expectedResult);    
+    expect( userReducer(state, {type: UserActions.SET_LOGIN, payload: true}) ).toEqual(expectedResult);    
   });
 
   // Log out
@@ -87,7 +87,7 @@ describe( 'app reducer', () => {
 
     deepFreeze(state);
 
-    expect( appReducer(state, {type: AppActions.SET_LOGIN, payload: false}) ).toEqual(expectedResult);    
+    expect( userReducer(state, {type: UserActions.SET_LOGIN, payload: false}) ).toEqual(expectedResult);    
   });
 
 });

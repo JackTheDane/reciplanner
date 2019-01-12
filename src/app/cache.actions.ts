@@ -1,57 +1,29 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store';
-import { IRating } from './types/IRating';
-import { BasicRecipe } from './types/recipe-basic';
+import { BasicRecipe } from './types/BasicRecipe';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AppActions {
+export class CacheActions {
 
   constructor (
     private ngRedux: NgRedux<IAppState>, 
     // private crudService: CrudService
   ) {} 
 
-  
-  static ADD_RATING = 'ADD_RATING'; 
+  static SET_CACHED_RECIPES = 'SET_CACHED_RECIPES';
 
-  static SET_LOGIN = 'SET_LOGIN';
-
-  static ADD_SAVED_RECIPE = 'ADD_SAVED_RECIPE';
-  static REMOVE_SAVED_RECIPE = 'REMOVE_SAVED_RECIPE';
-
-  
- 
-  public addRating(newRating: IRating) {
+  public setCachedRecipes(recipes: BasicRecipe[]) {
     this.ngRedux.dispatch({
-      type: AppActions.ADD_RATING,
-      payload: newRating
+      type: CacheActions.SET_CACHED_RECIPES,
+      payload: recipes
     });
   }
 
-  public setLoggedIn(status: boolean) {
-    this.ngRedux.dispatch({
-      type: AppActions.SET_LOGIN,
-      payload: status
-    });
-  }
 
-  public saveRecipe(recipe: BasicRecipe) {
-    this.ngRedux.dispatch({
-      type: AppActions.ADD_SAVED_RECIPE,
-      payload: recipe
-    });
-  }
-
-  public removeSavedRecipe(recipe_id: string) {
-    this.ngRedux.dispatch({
-      type: AppActions.REMOVE_SAVED_RECIPE,
-      payload: recipe_id
-    });
-  }
 
   // createSitter(sitter: Sitter):void {
   //   this.ngRedux.dispatch({

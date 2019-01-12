@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { BasicRecipe } from './types/recipe-basic';
+import { BasicRecipe } from './types/BasicRecipe';
 
 @Pipe({
   name: 'filterByString',

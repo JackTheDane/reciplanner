@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BasicRecipe } from '../types/recipe-basic';
-import { AppActions } from '../app.actions';
+import { BasicRecipe } from '../types/BasicRecipe';
+import { AppActions } from '../user.actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 
