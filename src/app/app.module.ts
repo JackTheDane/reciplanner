@@ -39,6 +39,9 @@ import { StarRatingModule } from 'angular-star-rating';
 import { MaterialModule } from './material.import';
 import { IAppState, rootReducer } from './store';
 import { FilterPipe } from './filter.pipe';
+import { PageHeaderComponent } from './page-header/page-header.component';
+import { FavoriteButtonComponent } from './favorite-button/favorite-button.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -58,7 +61,10 @@ import { FilterPipe } from './filter.pipe';
     RatingComponent,
     RegisterComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    PageHeaderComponent,
+    FavoriteButtonComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

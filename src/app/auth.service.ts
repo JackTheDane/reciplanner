@@ -23,12 +23,6 @@ export class AuthService {
   login(userInfo: IUserLoginInfo): Observable<any> {
     const url = coreApiUrl + '/login';
 
-    this.userActions.setLoggedIn(true);
-    
     return this.http.post(url, JSON.stringify(userInfo));
-  }
-
-  logout(): void {
-
   }
 }

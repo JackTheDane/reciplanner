@@ -1,23 +1,16 @@
 <mat-card>
 
   <app-publisher-container
-    publisher = "{{ recipe.publisher }}"
-    publisher_url = "{{ recipe.publisher_url }}"
-    source_url = "{{ recipe.source_url }}"
-    image_size = 35
+    [publisher] = "recipe.publisher"
+    [publisher_url] = "recipe.publisher_url"
+    [source_url] = "recipe.source_url"
+    [image_size] = 35
   ></app-publisher-container>
 
-  <button 
-    mat-fab 
-    (color)="color" 
-    class="favoriteButton" 
-    title="{{getFavoriteButtonTitle()}}"
-    (click)="toggleFavorite()"
-  >
-    <i class="material-icons">
-      {{getFavoriteButtonIcon()}}
-    </i>
-  </button>
+  <!-- Favorite button -->
+  <app-favorite-button
+    [recipe]="recipe"
+  ></app-favorite-button>
 
   <a class="card-image" routerLink="/recipe/{{ recipe.recipe_id }}" [ngStyle]="getBackgroundImage()"></a>
 
@@ -34,28 +27,5 @@
       [id]="recipe.recipe_id"
     ></app-rating>
   </mat-card-content>
-
-
-    <!-- <a
-      mat-raised-button 
-      color="primary" 
-      style="color: white;"
-      
-      class="save-recipe-button"
-    >
-      Save
-    </a>
-
-    <a
-      mat-raised-button 
-      color="warn" 
-      style="color: white;"
-      (click)="removeRecipe()"
-      *ngIf="isFavorite"
-      class="save-recipe-button"
-      class="remove-recipe-button"
-    >
-      Remove
-    </a> -->
 
 </mat-card>

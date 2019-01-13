@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { IUserLoginInfo } from '../types/IUserLoginInfo';
 import { MatSnackBar } from '@angular/material';
 import { IAPIResponse } from '../types/IAPIResponse';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -34,7 +35,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -114,6 +116,7 @@ export class RegisterComponent implements OnInit {
             if (result && result.status === 200 ) {
               this.openSnackBar('User created!', 'Dismiss');
               this.registerForm.reset();
+              this.router.navigate(['/sign-in']);
             } else {
               this.openSnackBar('User creation failed', 'Dismiss');
             }

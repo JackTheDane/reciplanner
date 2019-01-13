@@ -5,7 +5,9 @@ import { UserState } from './store';
 import { IRating } from './types/IRating';
 
 const INITIAL_STATE: UserState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
+  userId: null,
+  name: null,
   ratings: [],
   savedRecipes: []
 };
@@ -31,8 +33,21 @@ export function UserReducer(state: UserState = INITIAL_STATE, action: {type: str
       return tassign(state, { ratings: ratingsCopy}); // Return new state
     }
 
-    case UserActions.SET_LOGIN: { // action.payload: Boolean
-      return tassign(state, {isLoggedIn: action.payload});
+    case UserActions.LOG_USER_IN: { // action.payload: { id: string; username: string }
+      const userInfo = action.payload as {id: string; username: string};
+      const userInfoCopy: UserState = {
+        isLoggedIn: true,
+        userId: userInfo.id,
+        name: userInfo.username,
+        ratings: [],
+        savedRecipes: []
+      };
+
+      return tassign(state, userInfoCopy);
+    }
+
+    case UserActions.LOG_USER_OUT: {
+      return tassign(state, INITIAL_STATE);
     }
 
     case UserActions.ADD_SAVED_RECIPE: { // action.payload: BasicRecipe

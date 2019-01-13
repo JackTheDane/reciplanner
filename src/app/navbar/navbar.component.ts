@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   }
 
   public onLogoutClick() {
-    this.userActions.setLoggedIn(false);
+    this.userActions.logUserOut();
   }
 
 }

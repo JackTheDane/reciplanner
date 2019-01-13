@@ -21,6 +21,10 @@ export class HtmlCharactersPipe implements PipeTransform {
     {
       code: '&#8217;',
       character: '\''
+    },
+    {
+      code: '&nbsp;',
+      character: ''
     }
   ];
 

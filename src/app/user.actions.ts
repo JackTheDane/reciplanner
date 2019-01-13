@@ -18,7 +18,8 @@ export class UserActions {
   
   static ADD_RATING = 'ADD_RATING'; 
 
-  static SET_LOGIN = 'SET_LOGIN';
+  static LOG_USER_IN = 'LOG_USER_IN';
+  static LOG_USER_OUT = 'LOG_USER_OUT';  
 
   static ADD_SAVED_RECIPE = 'ADD_SAVED_RECIPE';
   static REMOVE_SAVED_RECIPE = 'REMOVE_SAVED_RECIPE';
@@ -30,12 +31,21 @@ export class UserActions {
     });
   }
 
-  public setLoggedIn(status: boolean) {
+  public logUserIn(info: {id: string; username: string} ) {
     this.ngRedux.dispatch({
-      type: UserActions.SET_LOGIN,
-      payload: status
+      type: UserActions.LOG_USER_IN,
+      payload: info
     });
   }
+
+  public logUserOut() {
+    this.ngRedux.dispatch({
+      type: UserActions.LOG_USER_OUT,
+      payload: {}
+    });
+  }
+
+
 
   public saveRecipe(recipe: BasicRecipe) {
     this.ngRedux.dispatch({

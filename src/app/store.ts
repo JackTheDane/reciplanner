@@ -11,10 +11,11 @@ import { FullRecipe } from './types/FullRecipe';
 import { CacheReducer } from './cache.reducer';
 
 export interface UserState {
-  name?: string;
   ratings: IRating[];
   savedRecipes: BasicRecipe[];
   isLoggedIn: boolean;
+  userId?: string;
+  name?: string;
 }
 
 export interface CacheState {

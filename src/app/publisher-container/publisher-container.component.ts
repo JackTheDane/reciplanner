@@ -20,9 +20,12 @@ export class PublisherContainerComponent {
   @Input()
   image_size: number;
 
+  @Input()
+  recipePageLayot = false;
+
   noImgUrl = false;
 
-  getAvatarImage() {
+  getAvatarImage(): string {
     return !this.noImgUrl
       ? '//logo.clearbit.com/' + this.publisher_url + '?size=' + this.image_size
       : 'assets/images/avatar.jpg';
@@ -32,5 +35,11 @@ export class PublisherContainerComponent {
     if (!this.noImgUrl) {
       this.noImgUrl = true;
     }
+  }
+
+  getClass(): string {
+    return !this.recipePageLayot
+      ? 'publisher-container'
+      : 'publisher-container pageLayout';
   }
 }

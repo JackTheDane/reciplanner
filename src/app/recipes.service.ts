@@ -29,7 +29,11 @@ export class RecipesService {
   }
 
   getRecipeById(id: string = '', recipeOnly: boolean = false) {
-    const url = coreApiUrl + '/g?rId=' + id;
+    let url = coreApiUrl + '/g?rId=' + id;
+
+    if (recipeOnly) {
+      url += '&ingrOnly';
+    }
 
     return this.http.get(url);
   }

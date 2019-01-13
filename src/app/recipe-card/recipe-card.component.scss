@@ -15,21 +15,20 @@ mat-card{
     color: inherit;
   }
 
-  .favoriteButton,
-  .unFavoriteButton {
+  app-favorite-button {
     position: absolute;
     top: 5px;
     right: 5px;
     color: white;
   }
   
-  .favoriteButton {
+  app-favorite-button {
     transition: opacity .3s ease-in-out;
     opacity: 0;
   }
 
   &:hover {
-    .favoriteButton {
+    app-favorite-button {
       opacity: 1;
     }
   }
@@ -66,6 +65,8 @@ mat-card-content{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
+  background-color: lightgrey;
   
   height: 300px;
   
@@ -95,8 +96,8 @@ app-rating {
 
 app-publisher-container {
   position: absolute;
-  top: 10px;
-  left: 15px;
+  top: 0px;
+  left: 5px;
 
   color: white;
 
