@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BasicRecipe } from '../types/BasicRecipe';
-import { AppActions } from '../user.actions';
+import { UserActions } from '../user.actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 
@@ -18,7 +18,7 @@ export class RecipeCardComponent implements OnInit {
   public isFavorite = false;
 
   constructor(
-    private appActions: AppActions,
+    private userActions: UserActions,
     private ngRedux: NgRedux<IAppState>
   ) {}
 
@@ -72,9 +72,9 @@ export class RecipeCardComponent implements OnInit {
 
   public toggleFavorite() {
     if (!this.isFavorite) {
-      this.appActions.saveRecipe(this.recipe);
+      this.userActions.saveRecipe(this.recipe);
     } else {
-      this.appActions.removeSavedRecipe(this.recipe.recipe_id);
+      this.userActions.removeSavedRecipe(this.recipe.recipe_id);
     }
   }
 }

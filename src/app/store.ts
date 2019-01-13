@@ -19,6 +19,7 @@ export interface UserState {
 
 export interface CacheState {
   query: string;
+  pageNumber: number;
   recipes: FullRecipe[];
 }
 

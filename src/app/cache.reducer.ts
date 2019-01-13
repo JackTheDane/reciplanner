@@ -6,14 +6,15 @@ import { FullRecipe } from './types/FullRecipe';
 
 const INITIAL_STATE: CacheState = {
   query: null,
+  pageNumber: 1,
   recipes: []
 };
 
 export function CacheReducer(state: CacheState = INITIAL_STATE, action: {type: string; payload: any}) {
  switch (action.type) {
 
-    case CacheActions.SET_CACHED_RECIPES: { // action.payload: FullRecipe[]
-      return tassign(state, { recipes: action.payload });
+    case CacheActions.SET_CACHED_RECIPES: { // action.payload: {recipes: FullRecipe[], query: string, pageNumber: number}
+      return tassign(state, action.payload as CacheState);
     }
   
     default:

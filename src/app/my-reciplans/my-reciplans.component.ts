@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppActions } from '../user.actions';
+import { UserActions } from '../user.actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { BasicRecipe } from '../types/BasicRecipe';
@@ -20,10 +20,9 @@ export class MyReciplansComponent implements OnInit {
   });
 
   constructor(
-    private appActions: AppActions,
+    private userActions: UserActions,
     private ngRedux: NgRedux<IAppState>
   ) {
-    // this.appActions.
     this.ngRedux
         .select(res => res.userInfo.savedRecipes)
         .subscribe((savedRecipes: BasicRecipe[]) => {

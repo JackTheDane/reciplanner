@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { AppActions } from '../user.actions';
+import { UserActions } from '../user.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   public name: string;
 
   constructor(
-    private appActions: AppActions,
+    private userActions: UserActions,
     private ngRedux: NgRedux<IAppState>
   ) {
     this.ngRedux.select( res => res.userInfo).subscribe(
@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   }
 
   public onLogoutClick() {
-    this.appActions.setLoggedIn(false);
+    this.userActions.setLoggedIn(false);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store';
-import { BasicRecipe } from './types/BasicRecipe';
+import { FullRecipe } from './types/FullRecipe';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,19 @@ import { BasicRecipe } from './types/BasicRecipe';
 export class CacheActions {
 
   constructor (
-    private ngRedux: NgRedux<IAppState>, 
-    // private crudService: CrudService
+    private ngRedux: NgRedux<IAppState>
   ) {} 
 
   static SET_CACHED_RECIPES = 'SET_CACHED_RECIPES';
 
-  public setCachedRecipes(recipes: BasicRecipe[]) {
+  public setCachedRecipes(recipes: FullRecipe[], query: string = '', pageNumber = 1) {
     this.ngRedux.dispatch({
       type: CacheActions.SET_CACHED_RECIPES,
-      payload: recipes
+      payload: {
+        recipes: recipes,
+        query: query,
+        pageNumber: pageNumber
+      }
     });
   }
 
