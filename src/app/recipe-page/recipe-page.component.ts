@@ -74,8 +74,15 @@ export class RecipePageComponent implements OnInit {
           this.recipe$.ingredients = data as string[];
         } else {
           const result = data as ApiResponse;
+
+          console.log(result);
+
+          if (result && result.recipe) {
+            this.recipe$ = result.recipe;
+          } else {
+            this.errorOccured = true;
+          }
           
-          this.recipe$ = result.recipe;
           this.isLoading = false;
         }
       },
