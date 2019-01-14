@@ -13,12 +13,12 @@ export class RecipesService {
     private http: HttpClient,
   ) {}
 
-  getRecipesByQuery(query: string = '', page: number = 1): Observable<Object> {
+  public getRecipesByQuery(query: string = '', page: number = 1): Observable<Object> {
     const url = coreApiUrl + '/s?q=' + this.getCombinedQuery(query, page);
     return this.http.get(url);
   }
 
-  getCombinedQuery(query: string = '', page: number = 1): string {
+  private getCombinedQuery(query: string = '', page: number = 1): string {
     let url = query;
             
     if (page > 1) {
@@ -28,7 +28,7 @@ export class RecipesService {
     return url;
   }
 
-  getRecipeById(id: string = '', recipeOnly: boolean = false) {
+  public getRecipeById(id: string = '', recipeOnly: boolean = false) {
     let url = coreApiUrl + '/g?rId=' + id;
 
     if (recipeOnly) {

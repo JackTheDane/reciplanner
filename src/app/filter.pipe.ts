@@ -9,8 +9,6 @@ export class FilterPipe implements PipeTransform {
 
   transform( recipes: BasicRecipe[], query: string ): BasicRecipe[] {
     const filtered = recipes.filter( rec => rec.title.toLowerCase().includes(query.toLowerCase()) );
-    console.log('Reg ', recipes);
-    console.log('Filtered ', filtered);
     return filtered;
   }
  
