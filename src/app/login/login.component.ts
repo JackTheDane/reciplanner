@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { IAPIResponse } from '../types/IAPIResponse';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { UserActions } from '../user.actions';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private userActions: UserActions
   ) {
     this.isLoading = false;
   }
@@ -58,14 +60,38 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
 
           if (result && result.status === 200 ) {
-            this.snackBar.open(
-              'Welcome!',
-              '',
-              {
-                duration: 2000
-              }
-            );
-            this.router.navigate(['/']);
+            console.log(result.result);
+
+            try {
+              const parsedUserInfo: {
+                id: string; 
+                username: string
+              } = JSON.parse(result.result);
+
+              this.userActions.logUserIn(parsedUserInfo);
+
+              this.snackBar.open(
+                `Welcome back, ${parsedUserInfo.username}`,
+                '',
+                {
+                  duration: 2000
+                }
+              );
+              this.router.navigate(['/']);
+
+            } catch (error) {
+              console.log(error);
+              this.snackBar.open(
+                'An error occured',
+                'Dismiss',
+                {
+                  duration: 5000
+                }
+              );
+            }
+            
+            // this.userActions.setLoggedIn(true);
+
           } else {
             this.snackBar.open(
               'Username or password incorrect',

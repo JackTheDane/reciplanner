@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { IUserLoginInfo } from '../types/IUserLoginInfo';
 import { MatSnackBar } from '@angular/material';
 import { IAPIResponse } from '../types/IAPIResponse';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.maxLength(20)
+      Validators.maxLength(20),
+      Validators.pattern(new RegExp('^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$'))
     ]),
     repeatedPassword: new FormControl('', [
       Validators.required,
@@ -34,7 +36,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -45,29 +48,35 @@ export class RegisterComponent implements OnInit {
   get repeatedPassword() { return this.registerForm.get('repeatedPassword'); }
 
   public getErrorMessage(): string {
-    return this.getErrorMessageFor(this.username)
-      ? this.getErrorMessageFor(this.username)
-      : this.getErrorMessageFor(this.password)
-        ? this.getErrorMessageFor(this.password)
-        : this.getErrorMessageFor(this.repeatedPassword);
+    return this.getErrorMessageFor(this.username, 'Username')
+      ? this.getErrorMessageFor(this.username, 'Username')
+      : this.getErrorMessageFor(this.password, 'Password')
+        ? this.getErrorMessageFor(this.password, 'Password')
+        : this.getErrorMessageFor(this.repeatedPassword, 'Repeated Password');
   }
 
-  private getErrorMessageFor(input: AbstractControl): string {
-    console.log('addasd');
+  private getErrorMessageFor(input: AbstractControl, fieldName: string = 'Field'): string {
+    console.log(fieldName);
+
     try {
       if (input.invalid) {
         console.log('invalid');
-
         console.log(input.errors);
+
+        let returnString = fieldName + ' ';
 
 
         if (input.errors.required) {
-          return 'Field must be filled';
+          returnString += 'must be filled';
         } else if (input.errors.minlength) {
-          return 'Field must be at least 3 letters';
+          returnString += 'must be at least 3 letters';
         } else if (input.errors.maxlength) {
-          return 'Field cannot be more than 20 letters';
+          returnString += 'cannot be more than 20 letters';
+        } else if (input.errors.pattern) {
+          returnString += 'must contain both letters (A-Z) and numbers (0-9)';
         }
+
+        return returnString;
 
       }
 
@@ -114,6 +123,7 @@ export class RegisterComponent implements OnInit {
             if (result && result.status === 200 ) {
               this.openSnackBar('User created!', 'Dismiss');
               this.registerForm.reset();
+              this.router.navigate(['/sign-in']);
             } else {
               this.openSnackBar('User creation failed', 'Dismiss');
             }
@@ -123,6 +133,7 @@ export class RegisterComponent implements OnInit {
           } 
         );
     } else {
+      this.openSnackBar('Passwords must match', 'Dismiss');
       // TODO: Add handling for non-matching passwords
     }
   }

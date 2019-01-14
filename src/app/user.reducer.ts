@@ -1,22 +1,23 @@
 // import { TempDataService } from './temp-data.service';
 import { tassign } from 'tassign';
-import { AppActions } from './app.actions';
+import { UserActions } from './user.actions';
 import { UserState } from './store';
 import { IRating } from './types/IRating';
-import { BasicRecipe } from './types/recipe-basic';
 
 const INITIAL_STATE: UserState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
+  userId: null,
+  name: null,
   ratings: [],
   savedRecipes: []
 };
 
-export function appReducer(state: UserState = INITIAL_STATE, action: {type: string; payload: any}) {
+export function UserReducer(state: UserState = INITIAL_STATE, action: {type: string; payload: any}) {
  switch (action.type) {
   // case UserActions.FAILED_DELETE_SITTER: // payload: string
   //   return tassign(state, {errorMessage: action.payload});
     
-    case AppActions.ADD_RATING: { // action.payload : Rating
+    case UserActions.ADD_RATING: { // action.payload : Rating
       const passedRating = action.payload as IRating; // Get the payload
       const ratingsCopy = [...state.ratings]; // Get a copy of the ratings
       const index = ratingsCopy // Get the index of the rating with a matching id
@@ -32,11 +33,24 @@ export function appReducer(state: UserState = INITIAL_STATE, action: {type: stri
       return tassign(state, { ratings: ratingsCopy}); // Return new state
     }
 
-    case AppActions.SET_LOGIN: { // action.payload: Boolean
-      return tassign(state, {isLoggedIn: action.payload});
+    case UserActions.LOG_USER_IN: { // action.payload: { id: string; username: string }
+      const userInfo = action.payload as {id: string; username: string};
+      const userInfoCopy: UserState = {
+        isLoggedIn: true,
+        userId: userInfo.id,
+        name: userInfo.username,
+        ratings: [],
+        savedRecipes: []
+      };
+
+      return tassign(state, userInfoCopy);
     }
 
-    case AppActions.ADD_SAVED_RECIPE: { // action.payload: BasicRecipe
+    case UserActions.LOG_USER_OUT: {
+      return tassign(state, INITIAL_STATE);
+    }
+
+    case UserActions.ADD_SAVED_RECIPE: { // action.payload: BasicRecipe
       const recipes = [...state.savedRecipes];
       if ( !recipes.some( rec => rec.recipe_id === action.payload.recipe_id ) ) {
         recipes.push(action.payload);
@@ -44,17 +58,14 @@ export function appReducer(state: UserState = INITIAL_STATE, action: {type: stri
       return tassign(state, {savedRecipes: recipes});
     }
 
-    case AppActions.REMOVE_SAVED_RECIPE: { // action.payload: recipe_id: string
+    case UserActions.REMOVE_SAVED_RECIPE: { // action.payload: recipe_id: string
       let recipes = [...state.savedRecipes];
 
       recipes = recipes.filter( rec => rec.recipe_id !== action.payload);
 
-      console.log('Init ', state.savedRecipes);
-      console.log('filtered ', recipes);
-
       return tassign(state, {savedRecipes: recipes});
     }
-  
+
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import { FilterPipe } from './filter.pipe';
-import { BasicRecipe } from './types/recipe-basic';
+import { BasicRecipe } from './types/BasicRecipe';
 
 describe('FilterPipe', () => {
   

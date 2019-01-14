@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IAppState } from '../store';
-import { AppActions } from '../app.actions';
+import { UserActions } from '../user.actions';
 
 @Component({
   selector: 'app-rating',
@@ -22,7 +22,7 @@ export class RatingComponent {
   id: string; // Id of the recipe the rating is used for.
 
   constructor(
-    private appActions: AppActions,
+    private userActions: UserActions,
   ) {
     this.social_rank = Math.round( this.social_rank );
   }
@@ -37,7 +37,7 @@ export class RatingComponent {
   handleStarClickChange(e: { rating: number }) {
     console.log('Click', e);
 
-    this.appActions.addRating({
+    this.userActions.addRating({
       id: this.id,
       rating: (e.rating * 20)
     });

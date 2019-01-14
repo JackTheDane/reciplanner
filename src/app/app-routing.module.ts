@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Route, Routes, RouterModule } from '@angular/router';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { MyReciplansComponent } from './my-reciplans/my-reciplans.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
@@ -7,37 +7,63 @@ import { AuthGuard } from './auth-guard.service';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
+const pageRoutes: Route = {
+  path: 'page',
+  children: [
+    {
+      path: '',
+      pathMatch: 'full',
+      redirectTo: '/'
+    },
+    {
+      path: ':pageNumber',
+      component: FrontPageComponent
+    }
+  ]
+};
+
 const routes: Routes = [
   // Core
   {
     path: '',
+    pathMatch: 'full',
     component: FrontPageComponent,
   },
+  pageRoutes,
   {
-    path: 'page/:pageNumber',
-    component: FrontPageComponent,
-  },
-  {
-    path: 'search/:query',
-    component: FrontPageComponent,
+    path: 'search',
     children: [
       {
-        path: 'page/:pageNumber',
-        component: FrontPageComponent
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/'
       },
       {
-        path: 'page',
-        component: FrontPageComponent
+        path: ':query',
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            component: FrontPageComponent
+          },
+          pageRoutes
+        ]
       }
     ]
   },
   {
-    path: 'recipe/:id',
-    component: RecipePageComponent
-  },
-  {
     path: 'recipe',
-    component: FrontPageComponent
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/'
+      },
+      {
+        path: ':id',
+        component: RecipePageComponent
+      }
+    ]
   },
   // Unregistered user
   {
@@ -51,9 +77,13 @@ const routes: Routes = [
   // Registered user
   {
     path: 'reciplans',
-    component: MyReciplansComponent,
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: MyReciplansComponent
+      },
       {
         path: 'add-new',
         component: FrontPageComponent
@@ -63,8 +93,9 @@ const routes: Routes = [
   // Fallback
   {
     path: '**',
-    component: FrontPageComponent
-  },
+    pathMatch: 'full',
+    redirectTo: '/join'
+  }
 ];
 
 @NgModule({

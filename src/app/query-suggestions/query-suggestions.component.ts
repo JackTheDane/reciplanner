@@ -19,21 +19,56 @@ export class QuerySuggestionsComponent implements OnInit {
   @Input()
   query: string;
 
+  imageFolder = 'assets/images/suggestions';
+  
   suggestions: Suggestion[] = [
     {
-      title: 'Chicken'
+      title: 'Chicken',
+      imageUrl: 'chicken.jpg'
     },
     {
-      title: 'Beef'
+      title: 'Beef',
+      imageUrl: 'beef.jpg'
     },
     {
-      title: 'Lasagna'
+      title: 'Lasagna',
+      imageUrl: 'lasagna.jpg'
     },
     {
-      title: 'Asian'
+      title: 'Noodles',
+      imageUrl: 'noodles.jpg'
     },
     {
-      title: 'Pasta'
+      title: 'Rice',
+      imageUrl: 'rice.jpg'
+    },
+    {
+      title: 'Lamb',
+      imageUrl: 'lamb.jpg'
+    },
+    {
+      title: 'Burger',
+      imageUrl: 'burger.jpg'
+    },
+    {
+      title: 'Pizza',
+      imageUrl: 'pizza.jpg'
+    },
+    {
+      title: 'Breakfast',
+      imageUrl: 'breakfast.jpg'
+    },
+    {
+      title: 'Smoothie',
+      imageUrl: 'smoothie.jpg'
+    },
+    {
+      title: 'Vegan',
+      imageUrl: 'vegan.jpg'
+    },
+    {
+      title: 'Pasta',
+      imageUrl: 'pasta.jpg'
     }
   ];
 
@@ -62,6 +97,10 @@ export class QuerySuggestionsComponent implements OnInit {
         suggestion.isSelected = true;
       }
     });
+  }
+
+  getBackgroundImage(relativeUrl: string) {
+    return `url(${this.imageFolder}/${relativeUrl})`;
   }
 
 }

@@ -1,5 +1,7 @@
-<div class="loadingContainer" *ngIf="isLoading">
-  <mat-spinner ></mat-spinner>
+<div class="loadingContainer">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <span *ngIf="!isLoading && recipes$.length === 0">No recipes found</span>
 </div>
 
 <div class="recipe-card-container" *ngIf="!isLoading">

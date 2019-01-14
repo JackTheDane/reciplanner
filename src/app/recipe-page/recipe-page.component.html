@@ -1,22 +1,79 @@
-<div class="recipe-page" *ngIf="recipe$">
+<app-page-header isThin="true"></app-page-header>
 
+
+<div class="recipe-page" *ngIf="recipe$">
+  
+  <div *ngIf="!recipe$">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  
+    <div *ngIf="!isLoading"> Recipe not found </div>
+    <div *ngIf="errorOccured"> An error occured </div>
+  </div>
+  
   <div class="recipe-page__image-container">
     <img [src]="getImgSrc()" alt="{{ recipe$.title }}">
+    <div class="titleWrapper">
+      <h2 class="title">
+        {{ recipe$.title | htmlCharacters }}
+      </h2>
+      <app-favorite-button [recipe]="recipe$" ></app-favorite-button>
+    </div>
   </div>
 
-  <mat-dialog-content>
+  <div class="content">
     <div class="recipe-page__header">
-      <h3 mat-dialog-title>
-        {{ recipe$.title }}
-      </h3>
+
+      <!-- <mat-divider class="header-divider" ></mat-divider> -->
+
+      <button 
+        mat-raised-button 
+        color="accent"
+        (click)="goToPreviousPage()"
+      >
+        <i class="material-icons">
+          keyboard_backspace
+        </i>
+        Go back
+      </button>
+
+      <mat-divider class="header-divider" ></mat-divider>
     
       <app-publisher-container
-        publisher = "{{ recipe$.publisher }}"
-        publisher_url = "{{ recipe$.publisher_url }}"
-        source_url = "{{ recipe$.source_url }}"
+        [publisher] = "recipe$.publisher"
+        [publisher_url] = "recipe$.publisher_url"
+        [source_url] = "recipe$.source_url"
+        [image_size]="100"
+        [recipePageLayot]="true"
       ></app-publisher-container>
+
+
+      <div class="buttonWrapper">
+        <a [href]="recipe$.source_url" rel="noopener" target="_blank" class="linkButton" mat-stroked-button>
+          Go to site
+
+          <i class="material-icons">
+            open_in_new
+          </i>
+        </a>
+      </div>
+
     </div>
 
-  </mat-dialog-content>
+    <mat-divider [vertical]='true'></mat-divider>
+
+    <div>
+      <h4>Ingredients</h4>
+      
+      <mat-spinner *ngIf="!recipe$.ingredients"></mat-spinner>
+
+      <mat-selection-list *ngIf="recipe$.ingredients"> 
+        <mat-list-option *ngFor="let ingredient of recipe$.ingredients">
+          {{ingredient}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+
+  </div>
 
 </div>
+

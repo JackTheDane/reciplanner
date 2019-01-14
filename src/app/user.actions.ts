@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store';
 import { IRating } from './types/IRating';
+import { BasicRecipe } from './types/BasicRecipe';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,15 @@ export class UserActions {
     // private crudService: CrudService
   ) {} 
 
-  // static SET_IS_BABY = 'SET_IS_BABY'; 
   
   static ADD_RATING = 'ADD_RATING'; 
- 
+
+  static LOG_USER_IN = 'LOG_USER_IN';
+  static LOG_USER_OUT = 'LOG_USER_OUT';  
+
+  static ADD_SAVED_RECIPE = 'ADD_SAVED_RECIPE';
+  static REMOVE_SAVED_RECIPE = 'REMOVE_SAVED_RECIPE';
+
   public addRating(newRating: IRating) {
     this.ngRedux.dispatch({
       type: UserActions.ADD_RATING,
@@ -25,55 +31,33 @@ export class UserActions {
     });
   }
 
-  // createSitter(sitter: Sitter):void {
-  //   this.ngRedux.dispatch({
-  //     type: SittersActions.CREATE_SITTER
-  //   } as any)
+  public logUserIn(info: {id: string; username: string} ) {
+    this.ngRedux.dispatch({
+      type: UserActions.LOG_USER_IN,
+      payload: info
+    });
+  }
 
-  //   this.crudService.createSitter(sitter).subscribe(result => {
-  //    // on success 
-  //    this.ngRedux.dispatch({
-  //      type: SittersActions.CREATE_SITTER_SUCCESS,
-  //      payload: sitter
-  //    })
-  //   }, error => {
-  //     // if web service call fails with an error.
-  //     this.ngRedux.dispatch({
-  //       type: SittersActions.CREATE_SITTER_FAILURE,
-  //       payload: error
-  //     });
-  //   });
-  // }
+  public logUserOut() {
+    this.ngRedux.dispatch({
+      type: UserActions.LOG_USER_OUT,
+      payload: {}
+    });
+  }
 
-  // deleteSitter(id: string) : void {
 
-    
-  //   this.crudService.deleteSitter(id).subscribe(result => {
-  //     console.log("1");
-  //     this.ngRedux.dispatch({
-  //       type: SittersActions.DELETE_SITTER,
-  //       payload: id
-  //     });
-  //   }, error => {
-  //     console.log("2");
-  //     this.ngRedux.dispatch({
-  //       type: SittersActions.FAILED_DELETE_SITTER,
-  //       payload: 'Something bad happened :-)'
-  //     })
-  //   });
 
-    
-  // }
+  public saveRecipe(recipe: BasicRecipe) {
+    this.ngRedux.dispatch({
+      type: UserActions.ADD_SAVED_RECIPE,
+      payload: recipe
+    });
+  }
 
-  // setType(isBaby: boolean): void {
-    
-  //   // dispatch a redux action.
-  //   this.ngRedux.dispatch(
-  //   {
-  //     type: SittersActions.SET_IS_BABY,
-  //     payload: isBaby
-  //   } as any
-    
-  //   )
-  // }
+  public removeSavedRecipe(recipe_id: string) {
+    this.ngRedux.dispatch({
+      type: UserActions.REMOVE_SAVED_RECIPE,
+      payload: recipe_id
+    });
+  }
 }

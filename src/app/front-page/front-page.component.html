@@ -2,22 +2,20 @@
 
   <app-front-page-header [query]="query"></app-front-page-header>
 
-  <app-query-suggestions [query]="query" ></app-query-suggestions>
-
-  <div>
-    {{ temp }}
+  <div class="pageContentWrapper">
+    <app-query-suggestions [query]="query" ></app-query-suggestions>
+  
+    <app-recipe-card-container
+      [recipes$]="recipes$"
+      [isLoading]="isLoading"
+    ></app-recipe-card-container>
+  
+    <app-paginator
+      [query]="query"
+      [pageNumber]="pageNumber"
+      [showNextPage]="numberOfResponses >= 30"
+      *ngIf="!isLoading"
+    ></app-paginator>
   </div>
-
-  <app-recipe-card-container
-    [recipes$]="recipes$"
-    [isLoading]="isLoading"
-  ></app-recipe-card-container>
-
-  <app-paginator
-    [query]="query"
-    [pageNumber]="pageNumber"
-    [showNextPage]="numberOfResponses >= 30"
-    *ngIf="!isLoading"
-  ></app-paginator>
 
 </div>

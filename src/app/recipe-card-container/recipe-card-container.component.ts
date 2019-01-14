@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { BasicRecipe } from '../types/recipe-basic';
+import { BasicRecipe } from '../types/BasicRecipe';
 
 @Component({
   selector: 'app-recipe-card-container',

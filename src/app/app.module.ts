@@ -20,7 +20,6 @@ import { FrontPageHeaderComponent } from './front-page-header/front-page-header.
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeCardContainerComponent } from './recipe-card-container/recipe-card-container.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
@@ -40,6 +39,9 @@ import { StarRatingModule } from 'angular-star-rating';
 import { MaterialModule } from './material.import';
 import { IAppState, rootReducer } from './store';
 import { FilterPipe } from './filter.pipe';
+import { PageHeaderComponent } from './page-header/page-header.component';
+import { FavoriteButtonComponent } from './favorite-button/favorite-button.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -52,7 +54,6 @@ import { FilterPipe } from './filter.pipe';
     RecipeCardComponent,
     RecipeCardContainerComponent,
     RecipePageComponent,
-    AdminPageComponent,
     PublisherContainerComponent,
     HtmlCharactersPipe,
     PaginatorComponent,
@@ -60,7 +61,10 @@ import { FilterPipe } from './filter.pipe';
     RatingComponent,
     RegisterComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    PageHeaderComponent,
+    FavoriteButtonComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +96,11 @@ export class AppModule {
           name: '',
           ratings: [],
           savedRecipes: []
+        },
+        recipeCache: {
+          query: null,
+          pageNumber: 1,
+          recipes: []
         }
       }
     );
